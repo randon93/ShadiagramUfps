@@ -6,9 +6,9 @@
 
         <div class="formulario">
             <h1>Iniciar Sesión</h1>
-            <form action="#">
-                <input type="text" placeholder="Usuario" required>
-                <input type="password" placeholder="Contraseña" required>
+            <form method="post" action="<?php echo constant('URL');?>login/iniciar">
+                <input type="text" name="email"  placeholder="Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <input type="submit" value="Iniciar Sesión">
             </form>
             <br>
