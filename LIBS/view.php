@@ -10,7 +10,7 @@ class View {
 
   function render($vista){
     define('VISTA',$vista);
-    require 'views/plantilla/plantilla.php';
+    require 'VIEWS/plantilla/plantilla.php';
 
   }
 }
