@@ -4,7 +4,8 @@
   define ('usuarioBd','root');
   define ('password','');
   define ('host','127.0.0.1');
-  define ('URL','http://'.constant('host').'/web/SHADIAGRAM/');
+  define ('URL','http://'.constant('host').'/web/ShadiagramUfps/');
+  define ('SESION','nadie');
 
 
  ?>
