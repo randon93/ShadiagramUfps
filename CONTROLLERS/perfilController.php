@@ -3,11 +3,9 @@
  *
  */
 class Perfil extends controller{
-
-  function __construct()  {
+    function __construct()  {
     parent::__construct();
     $this->view->imagenes = [];
-
   }
 
   function render(){
