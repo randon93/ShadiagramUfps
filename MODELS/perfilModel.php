@@ -9,12 +9,10 @@ class perfilModel extends Model {
   }
 
 public function cargarImagenes(){
-
 //echo "cargar publicaciones";
   $ruta = 'PUBLIC/img';
   $directorio = opendir($ruta); //ruta actual
   $json = array();
-  $cont = 0;
   while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
       if (is_dir($archivo)){//verificamos si es o no un directorio
         //  echo "[".$archivo . "]<br />"; //de ser un directorio lo envolvemos entre corchetes
