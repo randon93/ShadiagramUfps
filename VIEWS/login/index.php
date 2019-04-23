@@ -11,19 +11,22 @@
                 <input type="password" placeholder="Contraseña" required>
                 <input type="submit" value="Iniciar Sesión">
             </form>
+            <br>
+            <div class="reset-password">
+                <a href="#">Olvide mi contraseña</a>
+            </div>
         </div>
 
         <div class="formulario">
             <h1>Crea tu Cuenta</h1>
-            	  <input type="text" placeholder="Nombres" ng-model="newUsuario.nombre" required>
-            	  <input type="text" placeholder="Apellidos" ng-model="newUsuario.apellido" required>
-                <input type="text" placeholder="Usuario" ng-model="newUsuario.usuario" required>
-                <input type="password" placeholder="Contraseña" ng-model="newUsuario.contrasenia" required>
-                <input type="email" placeholder="Correo Electrónico" ng-model="newUsuario.email" required>
-                <input type="text" placeholder="Teléfono" ng-model="newUsuario.relefono" required>
-                <input type="submit" value="Registrarse" ng-click="registrar()">
+            <form method="post" action="<?php echo constant('URL'); ?>login/registrar">
+            	<input type="text" name="nombre" placeholder="Nombres" required>
+            	<input type="text" name="alias" placeholder="Usuario" required>
+              <input type="password" name="password" placeholder="Contraseña" required>
+              <input type="email" name="email" placeholder="Correo Electrónico" required>
+
+              <input type="submit" value="Registrarse">
+            </form>
         </div>
-        <div class="reset-password">
-            <a href="#">Olvide mi contraseña</a>
-        </div>
+
     </div>
