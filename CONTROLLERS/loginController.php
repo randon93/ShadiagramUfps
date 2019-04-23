@@ -25,7 +25,7 @@ class Login extends controller{
   function registrar(){
 
     $alias = $_POST['alias'];
-    $nombre    = $_POST['nombre'];
+    $nombre   = $_POST['nombre'];
     $email  = $_POST['email'];
     $password = $_POST['password'];
 
@@ -42,5 +42,24 @@ class Login extends controller{
     }
   }
 
+  /** //////////////////////////////////////////////  */
+            /** METODO AGREGAR USUARIO*/
+  /** //////////////////////////////////////////////  */
+  function iniciar(){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $exito = $this->model->iniciar(['email'=>$email,'password'=>$password]);
+
+    if ($exito) {
+      echo constant('SESION');
+      defined('SESION',$alias);
+      echo constant('SESION');
+      header("location:".constant('URL')."perfil");
+    }else {
+      
+      $this->render('error');
+    }
+  }
 }
  ?>
