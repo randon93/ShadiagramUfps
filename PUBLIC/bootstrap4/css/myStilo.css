@@ -417,7 +417,7 @@ body {
     border-bottom: 4px solid #0075d9;
 }
 
-.contenedor-form button[type="submit"] {
+.contenedor-form input[type="submit"] {
     background: #FF851B;
     color: #FFF;
     width: 100%;
@@ -431,7 +431,7 @@ body {
     transition: all .5s ease;
 }
 
-.contenedor-form button[type="submit"]:hover {
+.contenedor-form input[type="submit"]:hover {
     background: rgba(0, 117, 217, 0.7);
 }
 
