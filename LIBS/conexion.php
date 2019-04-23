@@ -10,7 +10,9 @@ class Conexion {
     $this->pasword = constant('password');
     $this->pdo = null;
   }
-
+  /** //////////////////////////////////////////////  */
+            /** METODO CREA CONEXION BD*/
+  /** //////////////////////////////////////////////  */
   public function conectar()  {
 
     if ($this->pdo == null) {
@@ -38,49 +40,71 @@ class Conexion {
 
   }
 
+  /** //////////////////////////////////////////////  */
+            /** METODO CIERRA CONEXION BD*/
+  /** //////////////////////////////////////////////  */
   public function cerrarCon(){
     $this->pdo = null;
   }
 
+  /** //////////////////////////////////////////////  */
+            /** METODO AGREGAR USUARIO*/
+  /** //////////////////////////////////////////////  */
   private function aggAnd($parametro, $columna){
     $cad ="";
     for ($i=1; $i < count($parametro); $i++) {
-        $cad .=  " AND " . $columna[$i] . " = " . $parametro[$i];
+        $cad .=  " AND " . $columna[$i] . " = ? ";
     }
     return $cad;
   }
 
-  public function buscar($parametro, $tabla, $columna){
+  /** //////////////////////////////////////////////  */
+            /** METODO BUSCAR GENERICO*/
+  /** //////////////////////////////////////////////  */
+  public function buscarGen($parametro, $tabla, $columna){ // parametro[]: valos a buscar en la BD, tabla: tabla de la BD donde se buscara la fila, columna[]: variable de la tabla la cual se busca el parametro
 
     if(count($columna) == count($parametro)){
-
-        $array = [];
-        if (!empty($tabla) ) { // si $tabla trae un parametro se busca! si esta vacio retorna NULL.
-          if (count($parametro) == 0) {// si el parametro esta vacio se muestra toda la info de la tabla
+        $sql ="";
+        $param = array();
+        $array = array();
+        if (!empty($tabla) ) { // si $tabla trae un parametro se busca! si esta vacio retorna un Arreay vacio.
+          if (count($parametro) == 0) { // si el parametro esta vacio se muestra toda la info de la tabla
             $sql = "SELECT * FROM " . $tabla;
           }else {
-            if (count($columna) > 1 ) {
-              $sql = "SELECT * FROM " . $tabla . " WHERE " . $columna[0] ." = " . $parametro[0] . $this->aggAnd($parametro, $columna);
-            }
-            $sql = "SELECT * FROM " . $tabla . " WHERE " . $columna[0] ." = " . $parametro[0] ;
 
-            $con = $this->conectar()->prepare($sql);
-            $respuesta = $con -> execute();
-            if ($respuesta->fetchColumn() > 0) {
-              foreach ($respuesta as $res) {
-                  array_puesh($array, ['nombre'=>$res["nombre"], 'email'=>$res["email"],]);
+            if (count($columna) > 1 ) { // entra si se ha de buscar con mas de una parametro
+              $sql = "SELECT * FROM " . $tabla . " WHERE " . $columna[0] ." = ? " . $this->aggAnd($parametro, $columna);
+              for ($i=0; $i <count($parametro) ; $i++) {
+                array_push($param, $parametro[$i]);
               }
+            }else {// si no, es por que se busca haciendo referencia solo a un parametro
+              $sql = "SELECT * FROM " . $tabla . " WHERE " . $columna[0] ." = ?";
+
+              array_push($param, $parametro[0]);
+
             }
+
+            $con = $this->conectar();
+            $respuesta = $con -> prepare($sql);
+            $respuesta -> execute(array($parametro[0]));
+            if ($respuesta->fetchColumn() > 0) {
+              $respuesta -> execute(array($parametro[0]));
+              $this->cerrarCon();
+              foreach($respuesta as $res) {
+                  array_push($array, ['nombre'=>$res["nombre"], 'email'=>$res["email"],'contrasena'=>$res["contrasena"], 'alias'=>$res["apodo"]]);
+              }
+
+            }
+            return $array;
           }
         }else {
-          $sql = "nada";
-        //  return $sql;
+
+          return [];
         }
     } else {
-        $sql = "nada final";
+
+        return [];
       }
-      echo $sql;
-    //  return $sql;
   }
 
   /** //////////////////////////////////////////////  */
