@@ -2,7 +2,7 @@
 /**
  *
  */
- require_once 'CONTROLLERS/error.php';
+ require_once 'CONTROLLERS/errorController.php';
 class App {
 
   function __construct()  {
@@ -14,13 +14,15 @@ class App {
 
     //cuando se ingresa sin definir controlador
     if (empty($url[0])) {
-      $archivoController = 'CONTROLLER/login.php';
+      $archivoController = 'CONTROLLERS/loginController.php';
       require_once $archivoController;
       $controller = new login();
-      $controller->loadModel('login');
-      $controller->render();
+      $controller->loadModel('loginModel');
+      $controller->render('login');
+      return false;
     }
-    $archivoController = 'CONTROLLERS/'. $url[0] .'.php';
+
+    $archivoController = 'CONTROLLERS/'. $url[0] .'Controller.php';
     if(file_exists($archivoController)){
       require_once $archivoController;
       // INICIAR CONTROLADOR
@@ -31,7 +33,7 @@ class App {
       if(isset($url[1])){
         $controller->{$url[1]}();
       }else {
-        $controller->render();
+        $controller->render($url[0]);
       }
     }else{
       $controller = new falla();
