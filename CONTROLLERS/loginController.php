@@ -32,9 +32,7 @@ class Login extends controller{
     $exito = $this->model->agg(["nombre" => $nombre, "alias" => $alias, "email" => $email, "password" => $password ]);
 
     if ($exito) {
-      echo constant('SESION');
-      defined('SESION',$alias);
-      echo constant('SESION');
+    
       header("location:".constant('URL')."perfil");
       //$this->render('perfil');
     }else {
@@ -46,7 +44,7 @@ class Login extends controller{
             /** METODO AGREGAR USUARIO*/
   /** //////////////////////////////////////////////  */
 
-  function iniciar(){ 
+  function iniciar(){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
