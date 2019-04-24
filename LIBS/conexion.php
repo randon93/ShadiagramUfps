@@ -64,9 +64,9 @@ class Conexion {
   public function buscarGen($parametro, $tabla, $columna){ // parametro[]: valos a buscar en la BD, tabla: tabla de la BD donde se buscara la fila, columna[]: variable de la tabla la cual se busca el parametro
 
     if(count($columna) == count($parametro)){
-        $sql ="";
-        $param = array();
-        $array = array();
+        $sql =""; // variable en la cual guardamos la consulta a preparar
+        $param = array(); // array que guarda los parametros del EXECUTE
+        $array = array(); // array que guarda el objeto encontrado
         if (!empty($tabla) ) { // si $tabla trae un parametro se busca! si esta vacio retorna un Arreay vacio.
           if (count($parametro) == 0) { // si el parametro esta vacio se muestra toda la info de la tabla
             $sql = "SELECT * FROM " . $tabla;
@@ -86,9 +86,9 @@ class Conexion {
 
             $con = $this->conectar();
             $respuesta = $con -> prepare($sql);
-            $respuesta -> execute(array($parametro[0]));
-            if ($respuesta->fetchColumn() > 0) {
-              $respuesta -> execute(array($parametro[0]));
+          //  $respuesta -> execute($param);
+            if ($respuesta->execute($param)->fetchColumn() > 0) { // valido si la consulta encontro alguna coincidencia
+              //$respuesta -> execute($param);
               $this->cerrarCon();
               foreach($respuesta as $res) {
                   array_push($array, ['nombre'=>$res["nombre"], 'email'=>$res["email"],'contrasena'=>$res["contrasena"], 'alias'=>$res["apodo"]]);

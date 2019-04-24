@@ -7,7 +7,7 @@
       <div class="ih-item circle effect3 left_to_right "><a href="#">
           <div class="img"><img src="public/img/perfil-rene.jpg" alt="img"></div>
           <div class="info">
-            <h3>Ing. Rene Angarita</h3>
+            <h3><?php session_start();echo $_SESSION['SESION']; ?></h3>
             <p>Profesor de la UFPS Programacion Web</p>
           </div>
         </a></div>

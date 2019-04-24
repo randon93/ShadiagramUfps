@@ -46,20 +46,18 @@ class Login extends controller{
             /** METODO AGREGAR USUARIO*/
   /** //////////////////////////////////////////////  */
 
-  function iniciar(){
+  function iniciar(){ 
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $exito = $this->model->iniciar(['email'=>$email,'password'=>$password]);
 
     if ($exito) {
-      session_start();
-      $_SESSION['SESION'] = $;
       header("location:".constant('URL')."perfil");
     }else {
 
       $this->render('error');
     }
-  } //hola
+  }
 }
  ?>

@@ -41,8 +41,10 @@ class loginModel extends Model {
 
       $exito = $this->bd->buscarGen([$usuario['email']],'usuario',['email']);
 
-      if (!empty($exito)) {      
+      if (!empty($exito)) {
         if ($exito[0]["contrasena"] == $usuario['password']) {
+          session_start();
+          $_SESSION['SESION'] = $exito[0]["alias"];
           return true;
         }
       }else {
