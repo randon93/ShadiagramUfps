@@ -14,8 +14,6 @@ class Perfil extends controller{
     $this->view->render($r.'/index');
   }
 
-  function mostrarPublicaciones (){
 
-  }
 }
  ?>

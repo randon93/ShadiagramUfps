@@ -44,7 +44,6 @@ class loginModel extends Model {
 
       if (!empty($exito)) {
         if ($exito[0]["contrasena"] == $usuario['password']) {
-          session_start();
           $_SESSION['SESION'] = $exito[0]["alias"];
           return true;
         }
