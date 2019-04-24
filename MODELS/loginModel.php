@@ -40,11 +40,8 @@ class loginModel extends Model {
     public function iniciar($usuario){
 
       $exito = $this->bd->buscarGen([$usuario['email']],'usuario',['email']);
-      echo "<br /><h1>---------modelLogin--------</h1><br />";
-      var_dump($exito);
-      if (!empty($exito)) {
-        echo "<h1>".$exito[0]['contrasena']."</h1>";
-        echo "<br /><h2>". $usuario['password']."</h2>";
+
+      if (!empty($exito)) {      
         if ($exito[0]["contrasena"] == $usuario['password']) {
           return true;
         }
