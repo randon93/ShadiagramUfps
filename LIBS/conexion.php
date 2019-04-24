@@ -86,9 +86,9 @@ class Conexion {
 
             $con = $this->conectar();
             $respuesta = $con -> prepare($sql);
-          //  $respuesta -> execute($param);
-            if ($respuesta->execute($param)->fetchColumn() > 0) { // valido si la consulta encontro alguna coincidencia
-              //$respuesta -> execute($param);
+            $respuesta -> execute($param);
+            if ($respuesta->fetchColumn() > 0) { // valido si la consulta encontro alguna coincidencia
+              $respuesta -> execute($param);
               $this->cerrarCon();
               foreach($respuesta as $res) {
                   array_push($array, ['nombre'=>$res["nombre"], 'email'=>$res["email"],'contrasena'=>$res["contrasena"], 'alias'=>$res["apodo"]]);
