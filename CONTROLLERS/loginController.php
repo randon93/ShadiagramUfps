@@ -60,6 +60,6 @@ class Login extends controller{
 
       $this->render('error');
     }
-  }
+  } //hola
 }
  ?>
