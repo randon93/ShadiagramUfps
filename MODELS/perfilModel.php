@@ -11,7 +11,6 @@ class perfilModel extends Model {
 public function cargarImagenes(){
   $user = $_SESSION['SESION'];
   $ruta = 'PUBLIC/USER/'.$user;
-  echo "<h1>".$ruta."</h1>";
   $directorio = opendir('PUBLIC/USER/'.$user); //ruta actual
   $json = array();
   while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
