@@ -91,7 +91,7 @@ class Conexion {
               $respuesta -> execute($param);
               $this->cerrarCon();
               foreach($respuesta as $res) {
-                  array_push($array, ['nombre'=>$res["nombre"], 'email'=>$res["email"],'contrasena'=>$res["contrasena"], 'alias'=>$res["apodo"]]);
+                  array_push($array, ['nombre'=>$res["nombre"], 'email'=>$res["email"],'contrasena'=>$res["contrasena"], 'alias'=>$res["apodo"], 'id'=>["id"]]);
               }
 
             }

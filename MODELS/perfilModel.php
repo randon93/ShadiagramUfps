@@ -8,10 +8,9 @@ class perfilModel extends Model {
     parent::__construct();
   }
 
-public function cargarImagenes(){
-  $user = $_SESSION['SESION'];
-  $ruta = 'PUBLIC/USER/'.$user;
-  $directorio = opendir('PUBLIC/USER/'.$user); //ruta actual
+public function cargarImagenes($user){
+
+  $directorio = opendir('PUBLIC/img/'.$user); //ruta actual
   $json = array();
   while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
       if (is_dir($archivo)){//verificamos si es o no un directorio

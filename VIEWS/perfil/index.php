@@ -8,8 +8,11 @@
           <div class="img"><img src="public/img/perfil-rene.jpg" alt="img"></div>
           <div class="info">
             <h3><?php
-            echo $_SESSION['SESION']; ?></h3>
-            <p>Profesor de la UFPS Programacion Web</p>
+               echo $this->model->getAlias();
+             ?></h3>
+            <p><?php
+              echo  $this->model->getNombre().'<br />'. $this->model->getEmail();
+             ?></p>
           </div>
         </a></div>
     </div>
@@ -37,7 +40,7 @@
   <!-- **************************************************************** -->
   <div class="groupButonFriends">
     <div class="btn-group " role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary">Left</button>
+      <button type="button" class="btn btn-secondary"><a href="<?php echo constant('URL');?>login/cerrarSesion">CERRAR</a></button>
       <button type="button" class="btn btn-secondary">Middle</button>
       <button type="button" class="btn btn-secondary">Right</button>
     </div>

@@ -2,8 +2,26 @@
 /**
  *
  */
-
+  require_once  'sesion.php';
 class loginModel extends Model {
+
+  private $nombre = null;
+  private $email = null;
+  private $alias = null;
+  private $sesiOn = null;
+
+  public function getNombre() {
+    return $this->nombre;
+  }
+  public function getEmail() {
+    return $this->email;
+  }
+  public function getAlias() {
+    return $this->alias;
+  }
+  public function getSesiOn() {
+     return $this->sesiOn;
+  }
 
   function __construct()  {
     parent::__construct();
@@ -33,7 +51,6 @@ class loginModel extends Model {
       return false; // YA EXISTE UN USUARIO REGISTRADO CON ESE EMAIL
     }
 
-
     /** ---------------------------------------- */
     /** ----------FUNCION INICIAR SESION-------- */
     /** ---------------------------------------- */
@@ -43,8 +60,12 @@ class loginModel extends Model {
       $exito = $this->bd->buscarGen([$usuario['email']],'usuario',['email']);
 
       if (!empty($exito)) {
-        if ($exito[0]["contrasena"] == $usuario['password']) {
-          $_SESSION['SESION'] = $exito[0]["alias"];
+        if ($exito[0]['contrasena'] == $usuario['password']) {
+          $this->sesiOn = new Sesion();
+          $this->sesiOn->setCurrentUser($exito[0]['alias']);
+          $this->nombre = $exito[0]['nombre'];
+          $this->email = $exito[0]['email'];
+          $this->alias = $exito[0]['alias'];
           return true;
         }
       }else {

@@ -2,7 +2,7 @@
 /**
  *
  */
-class sesion {
+class Sesion {
 
   function __construct()  {
       session_start();
@@ -18,8 +18,7 @@ class sesion {
 
   public function cerrarSesion(){
     $session_unset();
-    $session_destroy();
-    echo "<h1>CERRE---</h1>";
+    $session_destroy();  
   }
 }
  ?>

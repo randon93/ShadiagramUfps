@@ -5,7 +5,10 @@
   require_once 'LIBS/view.php';
   require_once 'LIBS/app.php';
   require_once 'CONFIG/config.php';
-  
+  //require_once 'LIBS/sesion.php';
+
+
+
 
   $app = new App();
  ?>
