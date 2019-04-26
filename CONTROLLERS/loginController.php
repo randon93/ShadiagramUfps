@@ -44,14 +44,15 @@ class Login extends controller{
 
   function iniciar(){
 
-    if (empty($_POST['email']) && empty($_POST['password'])) {
-        if ($this->model->sesiOn == null) {
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        if ($this->model->getSesiOn() == null) {
             $email = $_POST['email'];/* -------------------- */
             $password = $_POST['password'];
             $exito = $this->model->iniciar(['email'=>$email,'password'=>$password]);
             if ($exito) {
                 require_once 'perfilController.php';
                 $perfilUser = new Perfil();
+                $perfilUser->loadModel('perfil');
                 $perfilUser->render($this->model->getAlias());
                 //require_once (constant('URL').'VIEWS/PERFIL/index.php');
                 //header("location:".constant('URL')."perfil");

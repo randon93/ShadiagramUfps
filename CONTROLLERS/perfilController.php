@@ -10,6 +10,7 @@ class Perfil extends controller{
   }
 
   function render($user){
+
     $img = $this->model->cargarImagenes($user);
     $this->view->imagenes = $img;
     $this->view->render('PERFIL/index');

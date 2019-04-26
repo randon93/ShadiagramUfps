@@ -51,7 +51,11 @@
    <!-- **************************************************************** -->
 
     <div id="view">
-      <?php require ('views/'.constant('VISTA').'.php')  ?>
+
+      <?php
+echo './views/'.constant('VISTA').'.php';
+        require ('views/'.constant('VISTA') . '.php')
+       ?>
     </div>
 
    <!-- **************************************************************** -->
