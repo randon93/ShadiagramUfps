@@ -9,7 +9,7 @@ class perfilModel extends Model {
   }
 
 public function cargarImagenes($user){
-echo $user;
+  
   $directorio = opendir('PUBLIC/img/'.$user); //ruta actual
   $json = array();
   while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente

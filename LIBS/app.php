@@ -5,12 +5,30 @@
  require_once 'CONTROLLERS/errorController.php';
 class App {
 
+  private $sesion;
   function __construct()  {
+    $this->sesion = new Sesion();
+    $this->validarSesion();
+  }
+
+
+  public function validarSesion() {
+    $this->sesion->cerrarSesion();
+    echo "--entre 1";
+    var_dump( $this->sesion->getCurrentUser());
+    if ( empty( $this->sesion->getCurrentUser() ) ) {
+      
+      $this->cargarInicio();
+    }
+    echo $this->sesion->getCurrentUser();
+   echo "<H1> TIENE SESION CARGADA </H1>";
+  }
+
+  public function cargarInicio() {
 
     $url = isset($_GET['url']) ? $_GET['url']: null;
     $url = rtrim($url, '/');
     $url = explode('/', $url);
-
 
     //cuando se ingresa sin definir controlador
     if (empty($url[0])) {
@@ -40,4 +58,6 @@ class App {
     }
   }
 }
+
+
  ?>

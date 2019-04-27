@@ -3,9 +3,21 @@
  *
  */
 class Controller{
+  private $viewCtr;
+  private $modelCtr;
+  private $sesionCtr;
+
+  public function getViewCtr() {
+     return $this->viewCtr;
+  }
+
+  public function getModelCtr() {
+    return $this->modelCtr;
+  }
 
   function __construct()  {
-    $this->view = new view();
+    $this->viewCtr = new view();
+  //  $this->$sesionCtr = new Sesion();
   }
 
   public function loadModel($model)  {
@@ -13,7 +25,7 @@ class Controller{
     if (file_exists($url)) {
         require $url;
         $modelName = $model."Model";
-        $this->model = new $modelName();
+        $this->modelCtr = new $modelName();
     }
   }
 

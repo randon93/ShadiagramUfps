@@ -13,7 +13,7 @@ class Login extends controller{
   /** //////////////////////////////////////////////  */
 
   function render($r){
-    $this->view->render($r . '/index');
+    $this->getViewCtr()->render($r . '/index');
   }
 
   /** //////////////////////////////////////////////  */
@@ -27,7 +27,7 @@ class Login extends controller{
     $email  = $_POST['email'];
     $password = $_POST['password'];
 
-    $exito = $this->model->agg(["nombre" => $nombre, "alias" => $alias, "email" => $email, "password" => $password ]);
+    $exito = $this->getModelCtr()->agg(["nombre" => $nombre, "alias" => $alias, "email" => $email, "password" => $password ]);
 
     if ($exito) {
 
