@@ -5,7 +5,7 @@
     <!-- foto profile -->
     <div class="photoProfile">
       <div class="ih-item circle effect3 left_to_right "><a href="#">
-          <div class="img"><img src="public/img/perfil-rene.jpg" alt="img"></div>
+          <div class="img"><img src="<?php echo constant('URL'); ?>public/img/perfil-rene.jpg" alt="img"></div>
           <div class="info">
             <h3><?php
                echo $_SESSION['USER']->getNombre();
@@ -57,9 +57,9 @@
 foreach ($this->imagenes as $foto) { ?>
     <div >
       <a class="thumbnail" href="#thumb">
-        <img src="public/img/<?php echo $foto['img'] ?>" class="minia" />
+        <img src="<?php echo constant('URL'); ?>public/img/users/<?php echo $foto['img'] ?>" class="minia" />
         <span>
-          <img src="public/img/<?php echo $foto['img'] ?>" class="expandir"/>
+          <img src="<?php echo constant('URL'); ?>public/img/users/<?php echo $foto['img'] ?>" class="expandir"/>
           <br />Descripción para la foto.
         </span>
       </a>

@@ -8,27 +8,25 @@ class perfilModel extends Model {
     parent::__construct();
   }
 
-public function cargarImagenes(){echo " ** CARGANDO PUBLICACIONES DEL USUARIO PERFIL MODEL ** <br />";
+  public function cargarImagenes(){echo " ** CARGANDO PUBLICACIONES DEL USUARIO PERFIL MODEL ** <br />";
 
-  $directorio = opendir('PUBLIC/img/'); //ruta actual
-  $json = array();
-  while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
-      if (is_dir($archivo)){//verificamos si es o no un directorio
-        //  echo "[".$archivo . "]<br />"; //de ser un directorio lo envolvemos entre corchetes
-      }else {
-      /*  $nameImg = $archivo;
-        $nameImg = explode('-', $nameImg); // idUsuario - nameImg - fecha - consecutivo
-        if ($nameImg[2]) {
-          // code...
-        }*/
-        $otro = array('img'=>$archivo);
-        array_push($json,$otro);
-      }
+    $directorio = opendir('PUBLIC/img/users'); //ruta actual
+    $json = array();
+    while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
+        if (is_dir($archivo)){//verificamos si es o no un directorio
+          //  echo "[".$archivo . "]<br />"; //de ser un directorio lo envolvemos entre corchetes
+        }else {
+          $otro = array('img'=>$archivo);
+          array_push($json,$otro);
+        }
+    }
+    //echo json_encode($json);
+      return $json;
   }
-  //echo json_encode($json);
-    return $json;
-}
 
+  public function subirPublicacion(){
+    
+  }
 }
 /*
 
