@@ -6,7 +6,7 @@ class Sesion {
 
   private $user ;
 
-  function __construct()  {
+  function __construct()  { echo " ** CREANDO SESION ** <br />";
       session_start();
   }
 

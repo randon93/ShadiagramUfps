@@ -2,28 +2,11 @@
 /**
  *
  */
-  require_once  'sesion.php';
+  
+
 class loginModel extends Model {
 
-  private $nombre = null;
-  private $email = null;
-  private $alias = null;
-  private $sesiOn = null;
-
-  public function getNombre() {
-    return $this->nombre;
-  }
-  public function getEmail() {
-    return $this->email;
-  }
-  public function getAlias() {
-    return $this->alias;
-  }
-  public function getSesiOn() {
-     return $this->sesiOn;
-  }
-
-  function __construct()  {
+  function __construct()  { echo " ** CREANDO LOGIN MODEL ** <br />";
     parent::__construct();
   }
 
@@ -55,20 +38,19 @@ class loginModel extends Model {
     /** ----------FUNCION INICIAR SESION-------- */
     /** ---------------------------------------- */
 
-    public function iniciar($usuario){
+    public function iniciar($usuario){ echo " ** INICIAR LOGIN MODEL ** <br />";
 
+      /* contiene un Array con la informacion del usuario que intenta iniciar sesion */
       $exito = $this->bd->buscarGen([$usuario['email']],'usuario',['email']);
 
-      if (!empty($exito)) {
-        if ($exito[0]['contrasena'] == $usuario['password']) {
-          $this->sesiOn = new Sesion();
-          $this->sesiOn->setCurrentUser($exito[0]['alias']);
-          $this->nombre = $exito[0]['nombre'];
-          $this->email = $exito[0]['email'];
-          $this->alias = $exito[0]['alias'];
-          return true;
+      /*Si este array es diferente a NULL significa que el usuario existe procedemos a verificar su password*/
+      if (!empty($exito)) { echo " ** USER ENCONTRADO ** ";
+
+        if ($exito[0]['contrasena'] == $usuario['password']) { echo " ** INICIO SESION LOGIN MODEL ** <br />";
+            $_SESSION['USER'] = new Usuario($exito);
+            return true;
         }
-      }else {
+      }else { echo " ** NO ENCONTRAMOS USER LOGIN MODEL ** <br />";
         return false;
       }
     }

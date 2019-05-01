@@ -8,10 +8,10 @@
           <div class="img"><img src="public/img/perfil-rene.jpg" alt="img"></div>
           <div class="info">
             <h3><?php
-               echo $this->model->getAlias();
+               echo $_SESSION['USER']->getNombre();
              ?></h3>
             <p><?php
-              echo  $this->model->getNombre().'<br />'. $this->model->getEmail();
+              echo  $_SESSION['USER'] ->getNombre().'<br />'. $_SESSION['USER'] ->getEmail();
              ?></p>
           </div>
         </a></div>

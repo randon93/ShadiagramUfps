@@ -5,14 +5,19 @@
 
 class Login extends controller{
 
-  function __construct()  {
+  private $sesionCtr;
+  private $controllerFather;
+
+  function __construct()  { echo ' ** CREANDO CONTROLADOR DE LOGIN ** <br />';
+  //  $this->sesionCtr = $sesionApp;
     parent::__construct();
+
   }
   /** //////////////////////////////////////////////  */
       /** METODO RENDERISAR VISTA DEL CONTROLADOR*/
   /** //////////////////////////////////////////////  */
 
-  function render($r){
+  function render($r){ echo " ** RENDER LOGIN CONTROLLER **<br /> ";
     $this->getViewCtr()->render($r . '/index');
   }
 
@@ -42,29 +47,33 @@ class Login extends controller{
             /** METODO INICIAR SESION */
   /** //////////////////////////////////////////////  */
 
-  function iniciar(){
+  function iniciar(){ echo " ** LOGIN CONTROLLER iniciar **<br /> ";
 
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
-        if ($this->model->getSesiOn() == null) {
-            $email = $_POST['email'];/* -------------------- */
-            $password = $_POST['password'];
-            $exito = $this->model->iniciar(['email'=>$email,'password'=>$password]);
-            if ($exito) {
-                require_once 'perfilController.php';
-                $perfilUser = new Perfil();
-                $perfilUser->loadModel('perfil');
-                $perfilUser->render($this->model->getAlias());
-                //require_once (constant('URL').'VIEWS/PERFIL/index.php');
-                //header("location:".constant('URL')."perfil");
-            }else {
-                $this->render('error');
-            } /* -------------------- */
-        }else {
-            require_once 'perfilController.php';
-            $perfilUser = new Perfil();
-            $perfilUser->render($this->model->getAlias());
-        }
-    }else {
+
+        if ( !isset($_SESSION['USER']) ) { echo " ** CREANDO SESION ** "; // FALSE si no existe sesion.
+
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                /*Valida si el usuario puede o no crear una sesion*/
+                $exito = $this->getModelCtr()->iniciar(['email'=>$email,'password'=>$password]);
+                if ($exito) { echo " ** Sesion creada LOGIN CONTROLLER ** ";// TRUE el usuario creo una sesion, procede a mostrar su perfil
+
+                    require_once 'perfilController.php';
+                    $perfilUser = new Perfil();
+                    $perfilUser->loadModel('perfil');
+                    $perfilUser->render();
+                }else { echo " ** VISTA ERROR LOGIN CONTROLLER **<br /> ";
+                    $this->render('error');
+                }
+         }else { echo " ** EXISTE SESION LOGIN CONTROL **<br /> ";
+           echo $_SESSION['USER']->getAlias();
+             require_once 'perfilController.php';
+             $perfilUser = new Perfil();
+             $perfilUser->loadModel('perfil');
+             $perfilUser->render();
+         }
+    }else {echo " ** VISTA ERROR LOGIN CONTROLLER **<br /> ";
         $this->render('error');
     }
 

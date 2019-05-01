@@ -2,58 +2,32 @@
 /**
  *
  */
-class Usuario  extends Model{
+class Usuario  {
 
+  private $name;
+  private $email;
+  private $password;
+  private $alias;
+  private $id;
 
-  function __construct($usuario) {
-      parent::__construct();
-      /*$this->nombre = $usuario['nombre'];
-      $this->email = $usuario['email'];
-      $this->alias =$usuario['alias'];
-      $this->password = $usuario['password'];
-      $this->id = $usuario['id']; */
+  function __construct($user) { echo " ** CREANDO USUARIO ** <br />";
+    //  parent::__construct(); MODEL
+    $this->name = $user[0]['nombre'];
+    $this->email = $user[0]['email'];
+    $this->password = $user[0]['contrasena'];
+    $this->alias = $user[0]['alias'];
+    $this->id = $user[0]['id'];
+
   }
-  /** //////////////////////////////////////////////  */
-      /**verificamos si el usuario inicia sesion*/
-  /** //////////////////////////////////////////////  */
-    function existo($userName, $password){
-      $con = $this->bd->conectar(); //ESTABLECEMOS UNA CONEXION C LA BD
-      $exito = $con->prepare('SELECT * FROM usuario WHERE email = :email AND constrasena = :password');
-      $exito->execute(['email'=>$userName, 'password'=>$password]);
-      if ($exito->rowCount()) {
-        $con = $this->bd->cerrarCon();// al terminar el metodo cerramos CONEXION a la bd
-        return TRUE;
-      }else {
-        $con = $this->bd->cerrarCon();// al terminar el metodo cerramos CONEXION a la bd
-        return FALSE;
-      }
-    }
-  /** /////////////////// FIN  //////////////////////  */
-      /**verificamos si el usuario inicia sesion*/
-  /** //////////////////////////////////////////////  */
-
-  /** ///////////////////////////////////////////////  */
-      /**???????????????????????????????????*/
-  /** //////////////////////////////////////////////  */
-
-    public function crearSesion($user) {
-        if ($this->existo()) {
-          // code...
-        }
-    }
-  /** /////////////////// FIN  //////////////////////  */
-      /**???????????????????????????????????*/
-  /** //////////////////////////////////////////////  */
-
 /** //////////////////////////////////////////////  */
                 /** METODOS GET Y SET*/
 /** //////////////////////////////////////////////  */
 
     function getNombre(){
-      return $this->nombre;
+      return $this->name;
     }
     function setNombre($nombre){
-      $this->nombre = $nombre;
+      $this->name = $nombre;
     }
 
     function getEmail(){
@@ -62,12 +36,14 @@ class Usuario  extends Model{
     function setEmail($email){
       $this->email = $email;
     }
+
     function getAlias(){
       return $this->alias;
     }
     function setAlias($alias){
       $this->alias = $alias;
     }
+
     function getPassword(){
       return $this->password;
     }
@@ -83,6 +59,16 @@ class Usuario  extends Model{
     }
 /** //////////////////////////////////////////////  */
         /** FIN DE LOS METODOS GET Y SET*/
+/** //////////////////////////////////////////////  */
+
+/** ///////////////////////////////////////////////  */
+    /**???????????????????????????????????*/
+/** //////////////////////////////////////////////  */
+    public function FunctionName($value='')  {
+      // code...
+    }
+/** /////////////////// FIN  //////////////////////  */
+    /**???????????????????????????????????*/
 /** //////////////////////////////////////////////  */
 
 }

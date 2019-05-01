@@ -53,7 +53,9 @@
     <div id="view">
 
       <?php
-echo './views/'.constant('VISTA').'.php';
+      echo './views/'.constant('VISTA').'.php';
+      //var_dump(getdate());
+
         require ('views/'.constant('VISTA') . '.php')
        ?>
     </div>
