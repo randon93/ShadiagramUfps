@@ -72,11 +72,8 @@ class Conexion {
               }
             }else {// si no, es por que se busca haciendo referencia solo a un parametro
               $sql = "SELECT * FROM " . $tabla . " WHERE " . $columna[0] ." = ?";
-
               array_push($param, $parametro[0]);
-
             }
-
             $con = $this->conectar();
             $respuesta = $con -> prepare($sql);
             $respuesta -> execute($param);
@@ -109,9 +106,11 @@ class Conexion {
       $exito = $con->prepare("SELECT COUNT(*) FROM usuario WHERE email = ?");
       $exito->execute(array($email));
       if ($exito->fetchColumn() > 0) {
+        $this->cerrarCon();
         return true;
       }
-      return false;
+        $this->cerrarCon();
+        return false;
   }
 
 }//clase

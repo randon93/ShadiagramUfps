@@ -9,10 +9,14 @@ class View {
   }
 
   function render($vista){ echo " ** MOSTRANDO RENDER VIEW GENERAL ** <br />";
-    
-    define('VISTA',$vista);
-    require 'VIEWS/plantilla/plantilla.php';
-
+    echo "<h1>".$vista."</h1>";
+      if ( strcmp($vista, 'login/index') == 0) {
+        echo " <br /> <h1>PRRO</h1>";
+        require 'VIEWS/LOGIN/index.php';
+      }else{
+        define('VISTA',$vista);
+        require 'VIEWS/plantilla/plantilla.php';
+      }
   }
 }
  ?>

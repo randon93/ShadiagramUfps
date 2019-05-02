@@ -1,4 +1,9 @@
-
+.divMain img {
+        padding: 5px;
+        max-height: 300px;
+        border: 1px solid #rgba(200, 200, 200, 0.7);
+        box-shadow: rgba(0, 0, 0, 0.4) 0 0 20px;
+    }
 
 .contenedor {
   width: 1000px;
@@ -344,7 +349,7 @@
 }
 
 body {
-    background: url(../../img/bg2.jpg);
+    background: url(../../img/RECURSOS/bg2.jpg);
     background-size: cover;
     background-attachment: fixed;
     font-family: Roboto;

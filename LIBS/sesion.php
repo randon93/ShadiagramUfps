@@ -11,12 +11,12 @@ class Sesion {
   }
 
   public function setCurrentUser($usuariOn){
-    $_SESSION['sesionUser'] = $usuariOn;
-    $this->user = $_SESSION['sesionUser'];
+    $_SESSION['USER'] = $usuariOn;
+    $this->user = $_SESSION['USER'];
   }
 
   public function getCurrentUser(){
-    return $this->user;
+    return $_SESSION['USER'];
   }
 
   public function cerrarSesion(){

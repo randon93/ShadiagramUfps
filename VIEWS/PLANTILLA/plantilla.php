@@ -11,6 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js"></script>
   <script src="<?php echo constant('URL'); ?>public/bootstrap4/js/app.js"></script>
 
+
   <title>Perfil de Usuario</title>
 </head>
 <body>
@@ -73,6 +74,32 @@
     <script src="<?php echo constant('URL');?>public/bootstrap4/js/jquery-3.1.1.min.js"></script>
     <script src="<?php echo constant('URL');?>public/bootstrap4/js/main.js"></script>
 
+    <script>
+        function readFile(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var filePreview = document.createElement('img');
+                    filePreview.id = 'file-preview';
+                    //e.target.result contents the base64 data from the image uploaded
+                    filePreview.src = e.target.result;
+                    console.log(e.target.result);
+
+                    var previewZone = document.getElementById('file-preview-zone');
+                    previewZone.appendChild(filePreview);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        var fileUpload = document.getElementById('file-upload');
+        fileUpload.onchange = function (e) {
+            readFile(e.srcElement);
+        }
+
+    </script>
 
 </body>
 

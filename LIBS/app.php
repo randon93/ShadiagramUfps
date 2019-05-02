@@ -17,13 +17,22 @@ class App {
   }
 
   public function validarSesion() {
-    if ( empty( $this->sesionApp->getCurrentUser() ) ) {
+    if ( !isset($_SESSION['USER']) ) {
       $this->cargarInicio();
-    }else {
+    }else { echo " ** SESION YA INICIADA app ** <br />";
+      $url = $_GET['url'];
+      echo $url;
+      $url = rtrim($url, '/');
+      $url = explode('/', $url);
+      if ( strcmp($url[1], 'cerrarSesion') == 0){
+        $this->cargarInicio();
+        return true;
+      }
       $archivoController = 'CONTROLLERS/perfilController.php';
       require_once $archivoController;
       $controller = new Perfil();
       $controller->loadModel('perfil');
+      $controller->render('perfil');
     }
   }
 
@@ -32,6 +41,7 @@ class App {
     $url = isset($_GET['url']) ? $_GET['url']: null;
     $url = rtrim($url, '/');
     $url = explode('/', $url);
+    var_dump( $url);
     /* cuando se ingresa sin definir controlador
     strcmp Devuelve < 0 si str1 es menor que str2;
     > 0 si str1 es mayor que str2

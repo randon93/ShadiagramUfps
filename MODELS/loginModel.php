@@ -2,7 +2,7 @@
 /**
  *
  */
-  
+
 
 class loginModel extends Model {
 
@@ -24,7 +24,7 @@ class loginModel extends Model {
           $consulta = $this->bd->conectar()->prepare($query);
           $consulta -> execute(array($email,$nombre,$password,$alias));
           $this->bd->cerrarCon();
-          mkdir('PUBLIC/USER/'.$email);
+          //mkdir('PUBLIC/USER/'.$email);
           return true; // SE REGISTRO EL USUARIO EXITOSAMENTE
 
         } catch (PDOException $e) {

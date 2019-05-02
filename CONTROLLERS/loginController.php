@@ -35,9 +35,7 @@ class Login extends controller{
     $exito = $this->getModelCtr()->agg(["nombre" => $nombre, "alias" => $alias, "email" => $email, "password" => $password ]);
 
     if ($exito) {
-
-      header("location:".constant('URL')."perfil");
-      //$this->render('perfil');
+      $this->iniciar();
     }else {
       $this->render('error');
     }
@@ -58,7 +56,6 @@ class Login extends controller{
                 /*Valida si el usuario puede o no crear una sesion*/
                 $exito = $this->getModelCtr()->iniciar(['email'=>$email,'password'=>$password]);
                 if ($exito) { echo " ** Sesion creada LOGIN CONTROLLER ** ";// TRUE el usuario creo una sesion, procede a mostrar su perfil
-
                     require_once 'perfilController.php';
                     $perfilUser = new Perfil();
                     $perfilUser->loadModel('perfil');
@@ -85,7 +82,9 @@ class Login extends controller{
   /** //////////////////////////////////////////////  */
 
   function cerrarSesion(){
-    $this->model->getSesiOn->cerrarSesion();
+    session_unset();
+    session_destroy();
+    $this->render('error');
   }
 
 }
