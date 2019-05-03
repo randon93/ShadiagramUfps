@@ -83,18 +83,22 @@ foreach ($this->imagenes as $foto) { ?>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div id="divInputLoad">
-        <h1>Test it uploading your own image</h1>
-        <div id="divFileUpload">
-            <input id="file-upload" type="file" accept="image/*" />
-        </div>
-        <div id="file-preview-zone" class="divMain">
-        </div>
+      <div class="modal-body">
+        <form  action="<?php echo constant('URL');?>perfil/subirPublicacion" method="post" enctype="multipart/form-data">
+          <input type="file" name="imagen" >
+          <br><hr>
+          <label for="">Descripcion de la publicacion</label>
+          <br>
+          <input type="text" name="descripcion" >
+          <br><hr>
+          <input type="submit" class="btn btn-primary" value="Save changes">
+          <!--<input type="button" name="" value="Publicar"> -->
+        </form>
       </div>
+
       <div class="modal-footer">
-       <button type="button" class="btn btn-primary">Save changes</button>
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-     </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
 
   </div>

@@ -54,10 +54,10 @@ class Usuario  {
     }
 
     function getId(){
-      return $this->Id;
+      return $this->id;
     }
     function setId($Id){
-      $this->Id = $Id;
+      $this->id = $Id;
     }
 
     function getResena(){

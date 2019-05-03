@@ -32,7 +32,12 @@ class App {
       require_once $archivoController;
       $controller = new Perfil();
       $controller->loadModel('perfil');
-      $controller->render('perfil');
+      //$controller->render('perfil');
+      if(isset($url[1])){ echo " <br />** ENTRO A BUSCAR .popo ** <br />";
+        $controller->{$url[1]}();
+      }else { echo " ** CARGO LA VISTA ** <br />";
+        $controller->render('perfil');
+      }
     }
   }
 
