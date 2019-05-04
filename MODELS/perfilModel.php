@@ -61,12 +61,27 @@ class perfilModel extends Model {
                     $consulta = $con -> prepare('INSERT INTO publicacion ( idUsuario, imagen, descripcion, fechaSub) VALUES (?,?,?,?)');
                     $iduser = $_SESSION['USER']->getId();
                     $consulta -> execute(array($iduser, $newName, $descripcion, $fechaActual));
+                    $con = $this->bd->cerrarCon();
                     return true;
                   }
               }
           }
       }
       return false;
+  }
+
+  public function searchUser(){
+    $searchUser = $_POST['searchUser'];
+    echo $searchUser;
+    $con = $this->bd->conectar();
+    $foundUser = [];
+    $respuesta = $con->prepare("SELECT * FROM usuario WHERE nombre LIKE '%".$searchUser."%' ");
+    $respuesta->execute();
+      foreach($respuesta as $users) {
+        array_push($foundUser, [ "id"=>$users["id"], "nombre"=>$users["nombre"], "alias"=>$users["apodo"],"photo"=>$users["photo"] ]);
+    }
+    var_dump($foundUser);
+    return $foundUser;
   }
 }
 

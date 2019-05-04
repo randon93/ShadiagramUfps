@@ -10,6 +10,7 @@ class Usuario  {
   private $alias;
   private $id;
   private $resena;
+  private $photo;
 
   function __construct($user) { echo " ** CREANDO USUARIO ** <br />";
     //  parent::__construct(); MODEL
@@ -19,6 +20,7 @@ class Usuario  {
     $this->alias = $user[0]['alias'];
     $this->id = $user[0]['id'];
     $this->resena = $user[0]['resena'];
+    $this->photo = $user[0]['photo'];
 
   }
 /** //////////////////////////////////////////////  */
@@ -65,6 +67,13 @@ class Usuario  {
     }
     function setResena($resena){
       $this->resena = $resena;
+    }
+
+    function getPhoto(){
+      return $this->photo;
+    }
+    function setPhoto($photo){
+      $this->photo = $photo;
     }
 /** //////////////////////////////////////////////  */
         /** FIN DE LOS METODOS GET Y SET*/

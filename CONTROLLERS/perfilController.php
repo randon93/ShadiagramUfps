@@ -23,7 +23,11 @@ class Perfil extends controller{
     }else {
       $this->getViewCtr()->render('ERROR/index');
     }
+  }
 
+  public function buscarUsuarios(){
+    
+    $this->getModelCtr()->searchUser();
   }
 
 

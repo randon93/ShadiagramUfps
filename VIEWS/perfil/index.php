@@ -5,7 +5,7 @@
     <!-- foto profile -->
     <div class="photoProfile">
       <div class="ih-item circle effect3 left_to_right "><a href="#">
-          <div class="img"><img src="<?php echo constant('URL');?>public/img/users/perfil-rene.jpg" alt="img"></div>
+          <div class="img"><img src="<?php echo constant('URL');?>public/img/users/<?php echo $_SESSION['USER']->getPhoto();?>" alt="img"></div>
           <div class="info">
             <h3><?php
                echo $_SESSION['USER']->getNombre();

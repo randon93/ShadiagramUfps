@@ -37,8 +37,8 @@
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" method="post" action="<?php echo constant('URL');?>perfil/buscarUsuarios">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchUser">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
       </div>
