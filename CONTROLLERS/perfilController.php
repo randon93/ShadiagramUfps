@@ -18,11 +18,9 @@ class Perfil extends controller{
 
   public function subirPublicacion(){
     if( $this->getModelCtr()->subirPublicacion() ) {
-      $img = $this->getModelCtr()->cargarImagenes($_SESSION['USER']->getId());
-      $this->getViewCtr()->imagenes = $img;
-      $this->getViewCtr()->render('PERFIL/profile');
+      $this->render();
     }else {
-      $this->getViewCtr()->render('ERROR/profile');
+      $this->getViewCtr()->render('ERROR/index');
     }
   }
 
@@ -40,6 +38,29 @@ class Perfil extends controller{
       $this->getViewCtr()->render('PERFIL/profileOther');
 
 
+  }
+
+  public function configProfile(){
+    $this->getViewCtr()->render('PERFIL/configProfile');
+  }
+
+  public function subirPhotoProfile(){
+    if($this->getModelCtr()->subirPhotoProfile()){
+      $this->render();
+    }else {
+      $this->getViewCtr()->render('ERROR/index');
+    }
+
+  }
+
+  public function upDatePassword(){
+    if($this->getModelCtr()->upDatePassword() ){
+      echo "<script> alert('CONTRASEÑA ACTUALIZADA CORRECTAMENTE'); </script>";
+        $this->getViewCtr()->render('perfil/configProfile');
+    }else {
+        echo "<script> alert('Ocurrio un error al actualizar la contraseña intentelo mas tarde'); </script>";
+        $this->getViewCtr()->render('perfil/configProfile');
+    }
   }
 
 }

@@ -95,6 +95,39 @@ class perfilModel extends Model {
       $_SESSION['VISIT'] = $visitUser;
 
   }
+
+  public function subirPhotoProfile(){
+      $permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
+      $limiteKb = 16384;
+        if (in_array($_FILES['imagen']['type'], $permitidos) && $_FILES['imagen']['size'] <= $limiteKb*1024) {
+            $fechaActual = date('Y-m-d');
+            $noAleatorio = rand(100,9999);
+            $id =  $_SESSION['USER']->getId();
+            $newName = $fechaActual  . "-$noAleatorio-$id-". $_FILES['imagen']['name'] ;
+            $ruta  = $_SERVER['DOCUMENT_ROOT'] . '/SHADIAGRAMUFPS/PUBLIC/IMG/USERS/'.$newName;
+            if(move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)){
+              $con = $this->bd->conectar();
+              $consulta = $con -> prepare('UPDATE usuario SET photo = :photo WHERE id = :id');
+              $iduser = $_SESSION['USER']->getId();
+              $_SESSION['USER']->setPhoto($newName);
+              $consulta -> execute(array(":photo"=>$newName, ":id"=>$iduser ));
+              $con = $this->bd->cerrarCon();
+              return true;
+            }
+        }
+  }
+
+  public function upDatePassword(){
+    $con = $this->bd->conectar();
+    $upDate = $con->prepare('UPDATE usuario SET contrasena = :password WHERE id = :id');
+    if($upDate -> execute(array(":password"=>$_POST['passwordNewU'], ":id"=>$_SESSION['USER']->getId() ))){
+      $con = $this->bd->cerrarCon();
+      return true;
+    }else{
+      $con = $this->bd->cerrarCon();
+      return false;
+    }
+  }
 }
 
 /*
