@@ -127,6 +127,20 @@ class perfilModel extends Model {
       $con = $this->bd->cerrarCon();
       return false;
     }
+
+
+  }
+
+  public function upDateAlias(){
+    $con = $this->bd->conectar();
+    $con ->prepare('UPDATE usuario SET apodo = :alias WHERE id = :id');
+    if ($con -> execute(array(":alias"=>$_POST['nameNew'], ":id"=>$_SESSION['USER']->getId())) ){
+      $con = $this->bd->cerrarCon();
+      return true;
+    }else{
+      $con = $this->bd->cerrarCon();
+      return false;
+    }
   }
 }
 

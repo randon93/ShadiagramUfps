@@ -179,14 +179,16 @@
 													</div>
 
 											    <div id="cmbnom" class="container tab-pane fade"><br>
-												      <h3>Cambiar Nombre</h3>
+														<form class="" action="<?php constant('URL');?>perfil/upDateAlias" method="post">
+												      <h3>Cambiar Alias</h3>
 												      <br>
 												      <div class="form-group">
-														    <label >Nuevo Nombre :</label>
+														    <label >Nuevo Alias :</label>
 														    <br>
-														    <input type="txt" class="form-control" style="width: 65%" placeholder="Este sera tu nombre para los demas usuarios">
+														    <input type="txt" class="form-control" name="nameNew" style="width: 65%" placeholder="Este sera tu Alias para los demas usuarios">
 												  		</div>
-												  		<p align="right"><button type="button" class="btn btn-success" id="cmdcontra">Guardar</button></p>
+												  		<p align="right"><input type="submit" class="btn btn-success" id="cmdcontra" value="Cambiar"></p>
+															</form>
 											    </div>
 											   	<div id="cmbbio" class="container tab-pane fade"><br>
 												      <h3>Cambiar Descripcion</h3>
