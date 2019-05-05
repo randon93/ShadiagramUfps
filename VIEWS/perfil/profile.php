@@ -24,7 +24,7 @@
 		</div>
 		  <ul class="navbar-nav" >
 
-		        <li class="nav-item dropdown">
+		     <li class="nav-item dropdown">
 		      <a class="nav-link dropdown-toggle"  href="profile.html" id="navbardrop" data-toggle="dropdown">
 		        <img src="<?php echo constant('URL');?>public/img/recursos/usuario.png"  class="rounded-circle" id="profile">
 		      </a>
@@ -36,6 +36,7 @@
 		        <a class="dropdown-item" href="<?php echo constant('URL');?>login/cerrarSesion">Cerrar sesion</a>
 		      </div>
 		    </li>
+				<!--
 		    <li class="nav-item">
 		      <a class="nav-link" href="#"></a>
 		    </li>
@@ -45,27 +46,11 @@
 		       <li class="nav-item">
 		      <a class="nav-link" href="#"></a>
 		    </li>
+			-->
 		</ul>
-
 		</nav>
-
-		<!--Inicio MODAL navbar -->
-
-		  </div>
-		</div>
-		  </div>
-
-		</div>
-
-
-
-
-		<!--Fin de Modal navbar-->
-
-
-
-
 		<!--Fin  Barra navegacion-->
+
 		<div class="container-fluid bg-light">
 			<div class="container bg-light">
 				<div class="row">
@@ -216,7 +201,7 @@
 		    </div>
 		  </div>
 		</div>
-		</div>
+	<!--	</div> -->
 
 
 		<div class="container-fluid bg-light">

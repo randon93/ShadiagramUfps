@@ -32,10 +32,8 @@ class perfilModel extends Model {
             if (( strcmp($archivo, $photoNameUser[$i]) == 0 )) {
               $otro = array('img'=>$archivo);
               array_push($json,$otro);
-
             }
           }
-
         }
     }
     //echo json_encode($json);
@@ -81,9 +79,9 @@ class perfilModel extends Model {
           $user->encontrado([ "id"=>$users["id"], "nombre"=>$users["nombre"], "alias"=>$users["apodo"],"photo"=>$users["photo"], "email"=>$users['email'], "resena"=>$users['resena'] ]);
           array_push($foundUser, $user);
       }
-
     return $foundUser;
   }
+
 
   public function visitUser($visit){
       $visitUser = new Usuario();
@@ -93,7 +91,6 @@ class perfilModel extends Model {
       $visitUser->setResena($visit['resena']);
       $visitUser->setId($visit['id']);
       $_SESSION['VISIT'] = $visitUser;
-
   }
 }
 

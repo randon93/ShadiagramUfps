@@ -20,20 +20,22 @@ class App {
     if ( !isset($_SESSION['USER']) ) {
       $this->cargarInicio();
     }else { echo " ** SESION YA INICIADA app ** <br />";
-      $url = $_GET['url'];
+      $url = isset($_GET['url']) ? $_GET['url']: null;
       echo $url;
       $url = rtrim($url, '/');
       $url = explode('/', $url);
-      if ( strcmp($url[1], 'cerrarSesion') == 0){
-        $this->cargarInicio();
-        return true;
+      if (count($url) < 0 ) {
+        if ( strcmp($url[1], 'cerrarSesion') == 0){
+          $this->cargarInicio();
+          return true;
+        }
       }
       $archivoController = 'CONTROLLERS/perfilController.php';
       require_once $archivoController;
       $controller = new Perfil();
       $controller->loadModel('perfil');
       //$controller->render('perfil');
-      if(isset($url[1])){ echo " <br />** ENTRO A BUSCAR .popo ** <br />";        
+      if(isset($url[1])){ echo " <br />** ENTRO A BUSCAR .popo ** <br />";
         $controller->{$url[1]}();
       }else { echo " ** CARGO LA VISTA ** <br />";
         $controller->render('perfil');
@@ -84,6 +86,4 @@ class App {
     } */
   }
 }
-
-
  ?>

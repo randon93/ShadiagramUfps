@@ -170,7 +170,7 @@
 		</div>
 			</div>
 
-		</div>
+		<!-- </div> -->
 		<!--Fin MODAL SIGUIENDO -->
 
 		       <!-- The Modal CONFIGURACION -->
