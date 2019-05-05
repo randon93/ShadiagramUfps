@@ -36,8 +36,6 @@ class Perfil extends controller{
       $this->getModelCtr()->visitUser([ "id"=>$_GET['id'], "nombre"=>$_GET['nombre'], "alias"=>$_GET['alias'], "photo"=>$_GET['photo'], "resena"=>$_GET['resena'] ]);
       $this->getViewCtr()->imagenes = $img;
       $this->getViewCtr()->render('PERFIL/profileOther');
-
-
   }
 
   public function configProfile(){
@@ -72,5 +70,4 @@ class Perfil extends controller{
     }
   }
 }
-
  ?>

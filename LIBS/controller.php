@@ -22,7 +22,6 @@ class Controller{
   function __construct()  { echo " ** creando controlador padre ** <br />";
   //  $this->sesionCtr = $sesion;
     $this->viewCtr = new view();
-
   }
 
   public function loadModel($model)  { echo " ** creando LOAD MODEL CONTROLLER ** <br />";

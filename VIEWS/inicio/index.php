@@ -73,6 +73,8 @@
         <a class="dropdown-item" href="#">Cerrar sesion</a>
       </div>
     </li>
+
+		<!--
     <li class="nav-item">
       <a class="nav-link" href="#"></a>
     </li>
@@ -82,6 +84,8 @@
        <li class="nav-item">
       <a class="nav-link" href="#"></a>
     </li>
+
+	-->
 </ul>
 
 </nav>
@@ -109,7 +113,9 @@
 </div>
 
 
-<footer><p>Copyright Intercagram © 2019</p></footer>
+<footer>
+	<p>Copyright Intercagram © 2019</p>
+</footer>
 
 </div>
 

@@ -73,8 +73,6 @@ class Login extends controller{
     }else {echo " ** VISTA ERROR LOGIN CONTROLLER **<br /> ";
         $this->render('error');
     }
-
-
   }
 
   /** //////////////////////////////////////////////  */
