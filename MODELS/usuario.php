@@ -1,4 +1,4 @@
-<?php
+private<?php
 /**
  *
  */
@@ -12,8 +12,10 @@ class Usuario  {
   private $resena;
   private $photo;
 
-  function __construct($user) { echo " ** CREANDO USUARIO ** <br />";
-    //  parent::__construct(); MODEL
+public function __construct(){
+
+}
+  function crear($user) { echo " ** <BR /><H1>CREANDO USUARIO ** </H1><br />";
     $this->name = $user[0]['nombre'];
     $this->email = $user[0]['email'];
     $this->password = $user[0]['contrasena'];
@@ -22,6 +24,16 @@ class Usuario  {
     $this->resena = $user[0]['resena'];
     $this->photo = $user[0]['photo'];
 
+  }
+
+  public function encontrado($found){ echo" **<BR /><H1> CRANDO USUARIO ENCONTRADO ** </H1><BR />";
+    $this->name = $found['nombre'];
+    $this->alias = $found['alias'];
+    $this->id = $found['id'];
+    $this->photo = $found['photo'];
+    $this->email = $found['email'];
+    $this->password = null;
+    $this->resena = $found['resena'];
   }
 /** //////////////////////////////////////////////  */
                 /** METODOS GET Y SET*/

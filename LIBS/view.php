@@ -15,7 +15,8 @@ class View {
         require 'VIEWS/LOGIN/index.php';
       }else{
         define('VISTA',$vista);
-        require 'VIEWS/plantilla/plantilla.php';
+        echo "VIEWS/$vista.php";
+        require "VIEWS/$vista.php";
       }
   }
 }

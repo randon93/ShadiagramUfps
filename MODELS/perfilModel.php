@@ -11,18 +11,18 @@ class perfilModel extends Model {
   public function buscarImagenes($id){
     $photoUser = array();
     $con = $this->bd->conectar()->prepare('SELECT imagen, fechaSub FROM publicacion WHERE idUsuario = ? ORDER BY fechaSub DESC');
-    $con-> execute(array($_SESSION['USER']->getId()));
+    $con-> execute(array($id));
     foreach($con as $res) {
       array_push($photoUser, $res['imagen']);
     }
     return $photoUser;
   }
 
-  public function cargarImagenes(){echo " ** CARGANDO PUBLICACIONES DEL USUARIO PERFIL MODEL ** <br />";
+  public function cargarImagenes ( $id ) {echo " ** CARGANDO PUBLICACIONES DEL USUARIO PERFIL MODEL ** <br />";
 
     $directorio = opendir('PUBLIC/img/users'); //ruta actual
     $json = array();
-    $photoNameUser = $this->buscarImagenes($_SESSION['USER']->getId());
+    $photoNameUser = $this->buscarImagenes($id);
     $i = 0;
     while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
         if (is_dir($archivo)){//verificamos si es o no un directorio
@@ -71,17 +71,29 @@ class perfilModel extends Model {
   }
 
   public function searchUser(){
-    $searchUser = $_POST['searchUser'];
-    echo $searchUser;
-    $con = $this->bd->conectar();
-    $foundUser = [];
-    $respuesta = $con->prepare("SELECT * FROM usuario WHERE nombre LIKE '%".$searchUser."%' ");
-    $respuesta->execute();
-      foreach($respuesta as $users) {
-        array_push($foundUser, [ "id"=>$users["id"], "nombre"=>$users["nombre"], "alias"=>$users["apodo"],"photo"=>$users["photo"] ]);
-    }
-    var_dump($foundUser);
+      $foundUser = [];
+      $searchUser = $_POST['searchUser'];
+      $con = $this->bd->conectar();
+      $respuesta = $con->prepare("SELECT * FROM usuario WHERE nombre LIKE '%".$searchUser."%' || apodo LIKE '%".$searchUser."%' ");
+      $respuesta->execute();
+        foreach($respuesta as $users) {
+          $user = new Usuario();
+          $user->encontrado([ "id"=>$users["id"], "nombre"=>$users["nombre"], "alias"=>$users["apodo"],"photo"=>$users["photo"], "email"=>$users['email'], "resena"=>$users['resena'] ]);
+          array_push($foundUser, $user);
+      }
+
     return $foundUser;
+  }
+
+  public function visitUser($visit){
+      $visitUser = new Usuario();
+      $visitUser->setNombre($visit['nombre']);
+      $visitUser->setAlias($visit['alias']);
+      $visitUser->setPhoto($visit['photo']);
+      $visitUser->setResena($visit['resena']);
+      $visitUser->setId($visit['id']);
+      $_SESSION['VISIT'] = $visitUser;
+
   }
 }
 

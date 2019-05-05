@@ -47,7 +47,8 @@ class loginModel extends Model {
       if (!empty($exito)) { echo " ** USER ENCONTRADO ** ";
 
         if ($exito[0]['contrasena'] == $usuario['password']) { echo " ** INICIO SESION LOGIN MODEL ** <br />";
-            $_SESSION['USER'] = new Usuario($exito);
+            $_SESSION['USER'] = new Usuario();
+            $_SESSION['USER']->crear($exito);
             return true;
         }
       }else { echo " ** NO ENCONTRAMOS USER LOGIN MODEL ** <br />";
