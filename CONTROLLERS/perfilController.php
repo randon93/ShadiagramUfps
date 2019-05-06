@@ -65,8 +65,18 @@ class Perfil extends controller{
     if($this->getModelCtr()->upDateAlias()){
       $ant = $_SESSION['USER']->getAlias();
       $new = $_POST['nameNew'];
-      echo "<script> alert('Tu Alias ha cambiado de $ant a $new'); </script>";
+      echo "<script> alert('Tu Alias ha cambiado de @$ant a @$new'); </script>";
         $this->getViewCtr()->render('perfil/configProfile');
+    }
+  }
+
+  public function upDateDescription(){
+    if ($this->getModelCtr()->upDateDescription()) {
+      echo "<script> alert('DESCRIPCION ACTUALIZADA CORRECTAMENTE'); </script>";
+          $this ->getViewCtr()->render('perfil/configProfile');
+    }else {
+      echo "<script> alert('Ocurrio un error al actualizar la descripcion intentelo mas tarde'); </script>";
+      $this->getViewCtr()->render('perfil/configProfile');
     }
   }
 }
