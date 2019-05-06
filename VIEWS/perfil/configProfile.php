@@ -192,7 +192,6 @@
 											    </div>
 
 											   	<div id="cmbbio" class="container tab-pane fade"><br>
-<<<<<<< HEAD
 													<form class = "" action = " <?php echo constant ('URL');?>perfil/upDateDescription" method = "post">
 												      <h3>Cambiar Descripcion</h3>
 												      <br>
@@ -203,17 +202,6 @@
 															</div>
 												  		<p align="right"><input type="submit" class="btn btn-success" id="cmdcontra" value = "Cambiar"></p>
 													</form>
-=======
-														<form class="" action="<?php constant('URL');?>perfil/upDateDescription" method="post">
-												      <h3>Cambiar Descripcion</h3>
-												      <br>
-												      <div class="form-group">
-														    <br>
-														    <textarea class="form-control" name="descripcionNew" rows="3" id="comment" placeholder="Cuentale a los Demas Sobre ti"></textarea>
-												  		</div>
-												  		<p align="right"><input type="button" class="btn btn-success" id="cmdcontra" value="Actualizar"></p>
-															</form>
->>>>>>> 20dea231e9c27dd6a61053b35155d2501647906d
 											    </div>
 
 

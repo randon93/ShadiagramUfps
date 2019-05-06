@@ -128,7 +128,6 @@ class perfilModel extends Model {
 
   public function upDateAlias(){
     $con = $this->bd->conectar();
-<<<<<<< HEAD
     $vnew = $con ->prepare('UPDATE usuario SET apodo = :alias WHERE id = :id');
     if ($vnew -> execute(array(":alias"=>$_POST['nameNew'], ":id"=>$_SESSION['USER']->getId())) ){
       $con = $this->bd->cerrarCon();
@@ -144,11 +143,6 @@ class perfilModel extends Model {
     $con = $this->bd->conectar();
     $vnew = $con ->prepare('UPDATE usuario SET resena = :descripcion WHERE id = :id');
     if ($vnew -> execute(array(":descripcion"=>$_POST['descripcionNew'], ":id"=>$_SESSION['USER']->getId()))) {
-=======
-    $upDAte = $con ->prepare('UPDATE usuario SET apodo = :alias WHERE id = :id');
-    if ($upDAte -> execute(array(":alias"=>$_POST['nameNew'], ":id"=>$_SESSION['USER']->getId() ))){
-      $_SESSION['USER']->setAlias($_POST['nameNew']);
->>>>>>> 20dea231e9c27dd6a61053b35155d2501647906d
       $con = $this->bd->cerrarCon();
       $_SESSION['USER']->setResena($_POST['descripcionNew']);
       return true;

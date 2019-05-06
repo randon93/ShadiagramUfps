@@ -79,5 +79,9 @@ class Perfil extends controller{
       $this->getViewCtr()->render('perfil/configProfile');
     }
   }
+
+  public function follow (){
+
+  }
 }
  ?>
