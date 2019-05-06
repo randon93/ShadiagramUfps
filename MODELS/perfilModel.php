@@ -143,7 +143,11 @@ class perfilModel extends Model {
     $con = $this->bd->conectar();
     $vnew = $con ->prepare('UPDATE usuario SET resena = :descripcion WHERE id = :id');
     if ($vnew -> execute(array(":descripcion"=>$_POST['descripcionNew'], ":id"=>$_SESSION['USER']->getId()))) {
+<<<<<<< HEAD
         $con = $this->bd->cerrarCon();
+=======
+      $con = $this->bd->cerrarCon();
+>>>>>>> 9ffb7f2c1b0abd7ebd2e27c5545ea5d39a625787
       $_SESSION['USER']->setResena($_POST['descripcionNew']);
       return true;
     }else{

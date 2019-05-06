@@ -80,6 +80,7 @@ class Perfil extends controller{
     }
   }
 
+<<<<<<< HEAD
   public function followUser(){
     $this->getModelCtr()->followUser();
     $this->buscarUsuarios();
@@ -91,5 +92,10 @@ class Perfil extends controller{
   }
 
 
+=======
+  public function follow (){
+
+  }
+>>>>>>> 9ffb7f2c1b0abd7ebd2e27c5545ea5d39a625787
 }
  ?>
