@@ -61,7 +61,8 @@ class Login extends controller{
                     $perfilUser->loadModel('perfil');
                     $perfilUser->render();
                 }else { echo " ** VISTA ERROR LOGIN CONTROLLER **<br /> ";
-                    $this->render('error');
+                    echo "<script> alert('CONTRASEÑA O USUARIO ERRADO'); </script>";
+                    $this->render('login');
                 }
          }else { echo " ** EXISTE SESION LOGIN CONTROL **<br /> ";
            echo $_SESSION['USER']->getAlias();
