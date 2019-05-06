@@ -62,8 +62,8 @@ class Perfil extends controller{
   }
 
   public function upDateAlias(){
+    $ant = $_SESSION['USER']->getAlias();
     if($this->getModelCtr()->upDateAlias()){
-      $ant = $_SESSION['USER']->getAlias();
       $new = $_POST['nameNew'];
       echo "<script> alert('Tu Alias ha cambiado de @$ant a @$new'); </script>";
         $this->getViewCtr()->render('perfil/configProfile');
