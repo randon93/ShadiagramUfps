@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script type="text/javascript" src="<?php echo constant('URL');?>PUBLIC/bootstrap4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<head>
 		<title>@Nombredeusuario</title>
 	</head>
@@ -13,95 +14,89 @@
 
 
 			<!--Inicio  Barra navegacion-->
-			 <nav class="navbar navbar-expand-sm  bg-mycolor"  style="height: 80px">
-		  <!-- Brand/logo -->
-		  <a class="navbar-brand" href="index.html"><img src="<?php echo constant('URL');?>public/img/recursos/logo2.png"></a>
-		  <div class="mx-auto" >
-		  <form class="form-inline" method="post" action="<?php echo constant('URL');?>perfil/buscarUsuarios">
-		    <input class="form-control mr-sm-5" type="text" placeholder="Buscar" style="width: 500px" name="searchUser" required >
-		    <button class="btn" type="submit" data-toggle="modal" data-target="#navbb"><img src="<?php echo constant('URL');?>public/img/recursos/lupa.png"></button>
-		  </form>
-		</div>
-		  <ul class="navbar-nav" >
+			<nav class="navbar navbar-expand-sm  bg-mycolor" style="height: 80px">
+				<!-- Brand/logo -->
+				<a class="navbar-brand" href="index.html"><img src="<?php echo constant('URL');?>public/img/recursos/logo2.png"></a>
+				<div class="mx-auto">
+					<form class="form-inline" method="post" action="<?php echo constant('URL');?>perfil/buscarUsuarios">
+						<input class="form-control mr-sm-5" type="text" placeholder="Buscar" style="width: 500px" name="searchUser" required>
+						<button class="btn" type="submit"><img src="<?php echo constant('URL');?>public/img/recursos/lupa.png"></button>
+					</form>
+				</div>
+				<ul class="navbar-nav">
 
-		        <li class="nav-item dropdown">
-		      <a class="nav-link dropdown-toggle"  href="profile.html" id="navbardrop" data-toggle="dropdown">
-		        <img src="<?php echo constant('URL');?>public/img/recursos/usuario.png"  class="rounded-circle" id="profile">
-		      </a>
-		      <div class="dropdown-menu">
-		        <a class="dropdown-item" href="index.html">Inicio</a>
-		        <div class="dropdown-divider"></div>
-		        <a class="dropdown-item" href="#">Configuracion</a>
-		        <div class="dropdown-divider"></div>
-		        <a class="dropdown-item" href="<?php echo constant('URL');?>login/cerrarSesion">Cerrar sesion</a>
-		      </div>
-		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" href="#"></a>
-		    </li>
-		       <li class="nav-item">
-		      <a class="nav-link" href="#"></a>
-		    </li>
-		       <li class="nav-item">
-		      <a class="nav-link" href="#"></a>
-		    </li>
-		</ul>
-
-		</nav>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="profile.html" id="navbardrop" data-toggle="dropdown">
+							<img src="<?php echo constant('URL');?>public/img/recursos/usuario.png" class="rounded-circle" id="profile">
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="index.html">Inicio</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Configuracion</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="<?php echo constant('URL');?>login/cerrarSesion">Cerrar sesion</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"></a>
+					</li>
+				</ul>
+			</nav>
 
 		<!--Inicio MODAL navbar -->
 		   <div class="modal" id="navbb">
-		    <div class="modal-dialog modal-dialog-centered modal-sm">
-		      <div class="modal-content">
+				 <div class="modal-dialog modal-dialog-centered modal-sm">
+				   <div class="modal-content">
+				        <!-- Modal Header -->
+				        <div class="modal-header">
+				          <h4 class="modal-title" >Resultados</h4>
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        </div>
+				        <!-- Modal body -->
+				        <div class="modal-body">
+									<?php
+									for ($i=0; $i < count($this->founds) ; $i++) {
 
-		        <!-- Modal Header -->
-		        <div class="modal-header">
-		          <h4 class="modal-title" >Resultados</h4>
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        </div>
-
-		        <!-- Modal body -->
-		        <div class="modal-body">
-							<?php for ($i=0; $i < count($this->founds) ; $i++) {  ?>
-			        <div class="modal-body">
-                <form class="" action="<?php echo constant('URL');?>perfil/verPerfil?id=<?php echo $this->founds[$i]->getId()."&&alias=".$this->founds[$i]->getAlias()."&&nombre=".$this->founds[$i]->getNombre()."&&resena=".$this->founds[$i]->getResena()."&&photo=".$this->founds[$i]->getPhoto();?>" method="post">
-			          <img src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $this->founds[$i]->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
-                  <strong><?php echo $this->founds[$i]->getNombre(); ?></strong>
-                <div class="modal-footer">
-                  <input type="submit" class="btn btn-info" value="Seguir">
-                </div>
-                </form>
-							</div>
-						<?php } ?>
-		      	</div>
-
-		    </div>
-		  </div>
-
-		</div>
-		  </div>
-		</div>
-		  </div>
-
-		</div>
-
-
-
-
+										for ($j=0; $j < count($_SESSION['SEGUIDOS']) ; $j++) {
+											echo "<h1>".($_SESSION['SEGUIDOS'][$j]['seguido'])."</h1>". $_SESSION['USER']->getId() ;
+														if ($this->founds[$i]->getId() == $_SESSION['SEGUIDOS'][$j]['seguido']) { ?>
+															<div class="modal-body">
+																<form class="" action="<?php echo constant('URL');?>perfil/verPerfil?id=<?php echo $this->founds[$i]->getId()."&&alias=".$this->founds[$i]->getAlias()."&&nombre=".$this->founds[$i]->getNombre()."&&resena=".$this->founds[$i]->getResena()."&&photo=".$this->founds[$i]->getPhoto();?>" method="post">
+																<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $this->founds[$i]->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
+																	<strong><?php echo $this->founds[$i]->getNombre(); ?></strong>
+																	<input type="submit" class="btn btn-info" value="Visitar">
+																</form>
+															</div>
+													<?php  	}else{?>
+														<div class="modal-body">
+															<form class="" action="<?php echo constant('URL');?>perfil/followUser?id=<?php echo $this->founds[$i]->getId()."&&alias=".$this->founds[$i]->getAlias()."&&nombre=".$this->founds[$i]->getNombre()."&&resena=".$this->founds[$i]->getResena()."&&photo=".$this->founds[$i]->getPhoto();?>" method="post">
+															<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $this->founds[$i]->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
+																<strong><?php echo $this->founds[$i]->getNombre(); ?></strong>
+																<input type="submit" class="btn btn-info" value="Seguir">
+															</form>
+														</div>
+										<hr>
+									<?php }	}} ?>
+				      	</div>
+				    </div>
+				  </div>
+				</div>
 		<!--Fin de Modal navbar-->
-
-
-
-
 		<!--Fin  Barra navegacion-->
 		<div class="container-fluid bg-light">
 			<div class="container bg-light">
 				<div class="row">
-		  <div class="col-sm-4"><img src="<?php echo constant('URL');?>public/img/recursos/<?php echo $_SESSION['USER']->getPhoto() ?>" class="rounded-circle" style="height: 200px; width: 200px;margin: 25px" align="right"></div>
+		  <div class="col-sm-4"><img src="<?php echo constant('URL');?>public/img/users/<?php echo $_SESSION['USER']->getPhoto() ?>" class="rounded-circle" style="height: 200px; width: 200px;margin: 25px" align="right"></div>
 		  <div class="col-sm-8">
 		  	<br>
 		  	<br>
-		  	<p><strong><?php echo "@".$_SESSION['USER']->getAlias(); ?> &nbsp&nbsp&nbsp</strong> <button type="button" class="btn btn-outline-secondary">Editar Perfil</button> <button type="button" class="btn" data-toggle="modal" data-target="#modalconf"><img src="<?php echo constant('URL');?>public/img/recursos/ajustes.png"></button><button type="button" class="btn"  data-toggle="modal" data-target=".bd-example-modal-lg"><img src="<?php echo constant('URL');?>public/img/recursos/subir.png"></button></p>
+		  	<p><strong><?php echo "@".$_SESSION['USER']->getAlias();?> &nbsp&nbsp&nbsp</strong> <a href="<?php echo constant('URL');?>perfil/configProfile"><button type="button" class="btn btn-outline-secondary">Editar Perfil</button></a> <button type="button" class="btn" data-toggle="modal" data-target="#modalconf"><img src="<?php echo constant('URL');?>public/img/recursos/ajustes.png"></button><button type="button" class="btn"  data-toggle="modal" data-target=".bd-example-modal-lg"><img src="<?php echo constant('URL');?>public/img/recursos/subir.png"></button></p>
 		  	<p><strong><?php echo count($this->imagenes);?>&nbsp</strong>Publicaciones <a id="btn-seguidores" data-toggle="modal" data-target="#segui"><strong>&nbsp&nbsp18</strong>&nbspseguidores</a><a id="btn-siguiendo" data-toggle="modal" data-target="#sigui"><strong>&nbsp&nbsp&nbsp22</strong>&nbspseguidos</a></p>
 		  	<p><strong><?php echo $_SESSION['USER']->getNombre(); ?></strong></p>
 				<p><?php echo $_SESSION['USER']->getResena(); ?></p>
