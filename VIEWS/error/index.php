@@ -1,4 +1,4 @@
-  
+
       <?php require ('VIEWS/LOGIN/index.php') ; ?>
 
 <div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
