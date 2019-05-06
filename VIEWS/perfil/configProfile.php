@@ -179,7 +179,7 @@
 													</div>
 
 											    <div id="cmbnom" class="container tab-pane fade"><br>
-														<form class="" action="<?php constant('URL');?>perfil/upDateAlias" method="post">
+														<form class="" action="<?php echo constant('URL');?>perfil/upDateAlias" method="post">
 												      <h3>Cambiar Alias</h3>
 												      <br>
 												      <div class="form-group">
@@ -190,14 +190,17 @@
 												  		<p align="right"><input type="submit" class="btn btn-success" id="cmdcontra" value="Cambiar"></p>
 															</form>
 											    </div>
+
 											   	<div id="cmbbio" class="container tab-pane fade"><br>
+														<form class="" action="<?php constant('URL');?>perfil/upDateDescription" method="post">
 												      <h3>Cambiar Descripcion</h3>
 												      <br>
 												      <div class="form-group">
 														    <br>
-														    <textarea class="form-control" rows="3" id="comment" placeholder="Cuentale a los Demas Sobre ti"></textarea>
+														    <textarea class="form-control" name="descripcionNew" rows="3" id="comment" placeholder="Cuentale a los Demas Sobre ti"></textarea>
 												  		</div>
-												  		<p align="right"><button type="button" class="btn btn-success" id="cmdcontra">Guardar</button></p>
+												  		<p align="right"><input type="button" class="btn btn-success" id="cmdcontra" value="Actualizar"></p>
+															</form>
 											    </div>
 										  </div>
 								</div>

@@ -130,8 +130,9 @@ class perfilModel extends Model {
 
   public function upDateAlias(){
     $con = $this->bd->conectar();
-    $con ->prepare('UPDATE usuario SET apodo = :alias WHERE id = :id');
-    if ($con -> execute(array(":alias"=>$_POST['nameNew'], ":id"=>$_SESSION['USER']->getId())) ){
+    $upDAte = $con ->prepare('UPDATE usuario SET apodo = :alias WHERE id = :id');
+    if ($upDAte -> execute(array(":alias"=>$_POST['nameNew'], ":id"=>$_SESSION['USER']->getId() ))){
+      $_SESSION['USER']->setAlias($_POST['nameNew']);
       $con = $this->bd->cerrarCon();
       return true;
     }else{
