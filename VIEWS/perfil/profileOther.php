@@ -13,44 +13,40 @@
 
 
 			<!--Inicio  Barra navegacion-->
-			 <nav class="navbar navbar-expand-sm  bg-mycolor" style="height: 80px">
-		  <!-- Brand/logo -->
-		  <a class="navbar-brand" href="index.html"><img src="<?php echo constant('URL');?>public/img/recursos/logo2.png"></a>
-		  <div class="mx-auto" >
-		  <form class="form-inline" method="post" action="<?php echo constant('URL');?>perfil/buscarUsuarios">
-		    <input class="form-control mr-sm-5" type="text" placeholder="Buscar" style="width: 500px" name="searchUser" required>
-		    <button class="btn" type="submit" ><img src="<?php echo constant('URL');?>public/img/recursos/lupa.png"></button>
-		  </form>
-		</div>
-		  <ul class="navbar-nav" >
+			<nav class="navbar navbar-expand-sm  bg-mycolor" style="height: 80px">
+			 <!-- Brand/logo -->
+			 <a class="navbar-brand" href="index.html"><img src="<?php echo constant('URL');?>public/img/recursos/logo2.png"></a>
+			 <div class="mx-auto">
+				 <form class="form-inline" method="post" action="<?php echo constant('URL');?>perfil/buscarUsuarios">
+					 <input class="form-control mr-sm-5" type="text" placeholder="Buscar" style="width: 500px" name="searchUser" required>
+					 <button class="btn" type="submit"><img src="<?php echo constant('URL');?>public/img/recursos/lupa.png"></button>
+				 </form>
+			 </div>
+			 <ul class="navbar-nav">
 
-		        <li class="nav-item dropdown">
-		      <a class="nav-link dropdown-toggle"  href="profile.html" id="navbardrop" data-toggle="dropdown">
-		        <img src="<?php echo constant('URL');?>public/img/recursos/usuario.png"  class="rounded-circle" id="profile">
-		      </a>
-		      <div class="dropdown-menu">
-		        <a class="dropdown-item" href="index.html">Inicio</a>
-		        <div class="dropdown-divider"></div>
-		        <a class="dropdown-item" href="#">Configuracion</a>
-		        <div class="dropdown-divider"></div>
-		        <a class="dropdown-item" href="<?php echo constant('URL');?>login/cerrarSesion">Cerrar sesion</a>
-		      </div>
-		    </li>
-
-				<!--
-		    <li class="nav-item">
-		      <a class="nav-link" href="#"></a>
-		    </li>
-		       <li class="nav-item">
-		      <a class="nav-link" href="#"></a>
-		    </li>
-		       <li class="nav-item">
-		      <a class="nav-link" href="#"></a>
-		    </li>
-			-->
-		</ul>
-
-		</nav>
+				 <li class="nav-item dropdown">
+					 <a class="nav-link dropdown-toggle" href="profile.html" id="navbardrop" data-toggle="dropdown">
+						 <img src="<?php echo constant('URL');?>public/img/recursos/usuario.png" class="rounded-circle" id="profile">
+					 </a>
+					 <div class="dropdown-menu">
+						 <a class="dropdown-item" href="<?php echo constant('URL');?>perfil/seguidos">Inicio</a>
+						 <div class="dropdown-divider"></div>
+						 <a class="dropdown-item" href="#">Configuracion</a>
+						 <div class="dropdown-divider"></div>
+						 <a class="dropdown-item" href="<?php echo constant('URL');?>login/cerrarSesion">Cerrar sesion</a>
+					 </div>
+				 </li>
+				 <li class="nav-item">
+					 <a class="nav-link" href="#"></a>
+				 </li>
+				 <li class="nav-item">
+					 <a class="nav-link" href="#"></a>
+				 </li>
+				 <li class="nav-item">
+					 <a class="nav-link" href="#"></a>
+				 </li>
+			 </ul>
+		 </nav>
 
 		<!--Inicio MODAL navbar -->
 <!--
@@ -72,7 +68,7 @@
 		<div class="container-fluid bg-light">
 			<div class="container bg-light">
 				<div class="row">
-		  <div class="col-sm-4"><img src="<?php echo constant('URL');?>public/img/recursos/<?php echo $_SESSION['VISIT']->getPhoto() ?>" class="rounded-circle" style="height: 200px; width: 200px;margin: 25px" align="right"></div>
+		  <div class="col-sm-4"><img src="<?php echo constant('URL');?>public/img/users/<?php echo $_SESSION['VISIT']->getPhoto() ?>" class="rounded-circle" style="height: 200px; width: 200px;margin: 25px" align="right"></div>
 		  <div class="col-sm-8">
 		  	<br>
 		  	<br>
