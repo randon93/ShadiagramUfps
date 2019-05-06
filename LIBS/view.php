@@ -10,12 +10,9 @@ class View {
 
   function render($vista){ echo " ** MOSTRANDO RENDER VIEW GENERAL ** <br />";
     echo "<h1>".$vista."</h1>";
-      if ( strcmp($vista, 'login/index') == 0) {
-        echo " <br /> <h1>PRRO</h1>";
+      if ( strcmp($vista, 'login/index') == 0) {      
         require 'VIEWS/LOGIN/index.php';
       }else{
-        define('VISTA',$vista);
-        echo "VIEWS/$vista.php";
         require "VIEWS/$vista.php";
       }
   }
