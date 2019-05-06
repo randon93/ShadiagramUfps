@@ -24,7 +24,7 @@ class App {
       echo $url;
       $url = rtrim($url, '/');
       $url = explode('/', $url);
-      if (count($url) < 0 ) {
+      if (count($url) > 0 ) {
         if ( strcmp($url[1], 'cerrarSesion') == 0){
           $this->cargarInicio();
           return true;
@@ -55,7 +55,7 @@ class App {
     0 si son iguales.
     */
     if (empty($url[0]) || strcmp($url[0], 'login') == 0 ) {
-      echo "**CARGO INICIO App** <br />";
+      echo " **CARGO INICIO App** <br />";
       $archivoController = 'CONTROLLERS/loginController.php';
       require_once $archivoController;
       $controller = new Login();
