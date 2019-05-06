@@ -5,10 +5,10 @@
 
 class Perfil extends controller{
 
-    function __construct()  { echo " ** CREANDO PERFIL CONTROLLER ** <br />";
-    parent::__construct();
-    //$this->view->imagenes = [];
-  }
+  function __construct()  { echo " ** CREANDO PERFIL CONTROLLER ** <br />";
+        parent::__construct();
+        //$this->view->imagenes = [];
+      }
 
   function render(){ echo " ** RENDER PERFIL CONTROLLER ** <br />";
     $img = $this->getModelCtr()->cargarImagenes($_SESSION['USER']->getId());
@@ -79,5 +79,17 @@ class Perfil extends controller{
       $this->getViewCtr()->render('perfil/configProfile');
     }
   }
+
+  public function followUser(){
+    $this->getModelCtr()->followUser();
+    $this->buscarUsuarios();
+
+  }
+
+  public function seguidos(){
+    $this->getModelCtr()->seguidos();
+  }
+
+
 }
  ?>
