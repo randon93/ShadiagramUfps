@@ -52,30 +52,40 @@
 <body class="bg-light" >
 
 	<!--Inicio  Barra navegacion-->
-<nav class="navbar navbar-expand-sm  bg-mycolor " style="height: 80px">
-			  <!-- Brand/logo -->
-			  <a class="navbar-brand" href="index.html"><img src="<?php echo constant('URL');?>PUBLIC/IMG/recursos/logo2.png"></a>
-			  <div class="mx-auto" >
-				  <form class="form-inline" action="#">
-				    <input class="form-control mr-sm-5" type="text" placeholder="Buscar" style="width: 500px">
-				    <button class="btn" type="submit" data-toggle="modal" data-target="#navbb"><img src="<?php echo constant('URL');?>PUBLIC/IMG/recursos/lupa.png"></button>
-				  </form>
+	<nav class="navbar navbar-expand-sm  bg-mycolor" style="height: 80px">
+		<!-- Brand/logo -->
+		<a class="navbar-brand" href="index.html"><img src="<?php echo constant('URL');?>public/img/recursos/logo2.png"></a>
+		<div class="mx-auto">
+			<form class="form-inline" method="post" action="<?php echo constant('URL');?>perfil/buscarUsuarios">
+				<input class="form-control mr-sm-5" type="text" placeholder="Buscar" style="width: 500px" name="searchUser" required>
+				<button class="btn" type="submit"><img src="<?php echo constant('URL');?>public/img/recursos/lupa.png"></button>
+			</form>
+		</div>
+		<ul class="navbar-nav">
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="profile.html" id="navbardrop" data-toggle="dropdown">
+					<img src="<?php echo constant('URL');?>public/img/recursos/usuario.png" class="rounded-circle" id="profile">
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="index.html">Inicio</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Configuracion</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="<?php echo constant('URL');?>login/cerrarSesion">Cerrar sesion</a>
 				</div>
-			  <ul class="navbar-nav" >
-			      <li class="nav-item dropdown">
-				      <a class="nav-link dropdown-toggle"  href="profile.html" id="navbardrop" data-toggle="dropdown">
-				        <img src="<?php echo constant('URL');?>PUBLIC/IMG/RECURSOS/usuario.png"  class="rounded-circle" id="profile">
-				      </a>
-				      <div class="dropdown-menu">
-				        <a class="dropdown-item" href="index.html">Inicio</a>
-				        <div class="dropdown-divider"></div>
-				        <a class="dropdown-item" href="configuracion.html">Configuracion</a>
-				        <div class="dropdown-divider"></div>
-				        <a class="dropdown-item" href="#">Cerrar sesion</a>
-				      </div>
-			    </li>
-				</ul>
-</nav>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"></a>
+			</li>
+		</ul>
+	</nav>
 
 <!--Inicio MODAL navbar -->
 
@@ -192,7 +202,6 @@
 											    </div>
 
 											   	<div id="cmbbio" class="container tab-pane fade"><br>
-<<<<<<< HEAD
 													<form class = "" action = " <?php echo constant ('URL');?>perfil/upDateDescription" method = "post">
 												      <h3>Cambiar Descripcion</h3>
 												      <br>
@@ -203,20 +212,7 @@
 															</div>
 												  		<p align="right"><input type="submit" class="btn btn-success" id="cmdcontra" value = "Cambiar"></p>
 													</form>
-=======
-														<form class="" action="<?php constant('URL');?>perfil/upDateDescription" method="post">
-												      <h3>Cambiar Descripcion</h3>
-												      <br>
-												      <div class="form-group">
-														    <br>
-														    <textarea class="form-control" name="descripcionNew" rows="3" id="comment" placeholder="Cuentale a los Demas Sobre ti"></textarea>
-												  		</div>
-												  		<p align="right"><input type="button" class="btn btn-success" id="cmdcontra" value="Actualizar"></p>
-															</form>
->>>>>>> 20dea231e9c27dd6a61053b35155d2501647906d
 											    </div>
-
-
 
 										  </div>
 								</div>
