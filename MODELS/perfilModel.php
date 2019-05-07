@@ -80,6 +80,7 @@ class perfilModel extends Model {
               array_push($foundUser, $user);
         }
       $this->seguidos();
+      $this->seguidores();
       return $foundUser;
   }
 
@@ -162,6 +163,7 @@ class perfilModel extends Model {
       $seg -> execute( array(":seguido"=>$seguido, ":seguidor"=>$seguidor) );
       $con = $this->bd->cerrarCon();
       $this->seguidos();
+      $this->seguidores();
       return true;
     } catch (PDOException $e) {
       return false;
@@ -169,7 +171,7 @@ class perfilModel extends Model {
 
   }
 
-  public function seguidos(){ echo "<h1>PRRO JIJIJIJIJIJIJIOPUTA</h1>";
+  public function seguidos(){
     $con = $this->bd->conectar();
     $array = [];
     $seguidos = $con -> prepare('SELECT idAmistad FROM amistades WHERE idUsuario = :idUsuario');
@@ -181,6 +183,17 @@ class perfilModel extends Model {
     //  return $array;
   }
 
+  public function seguidores(){
+    $con = $this->bd->conectar();
+    $array = [];
+    $seguidos = $con -> prepare('SELECT idUsuario FROM amistades WHERE idAmistad = :idUsuario');
+    $seguidos -> execute( array(":idUsuario"=>$_SESSION['USER']->getId() ));
+    foreach ($seguidos as $seguido) {
+        array_push($array,  $seguido['idUsuario'] );
+    }
+    $_SESSION['SEGUIDORES'] = $array;
+    //  return $array;
+  }
 
 
 

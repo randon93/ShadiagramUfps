@@ -21,10 +21,9 @@ class App {
       $this->cargarInicio();
     }else {
       $url = isset($_GET['url']) ? $_GET['url']: null;
-
       $url = rtrim($url, '/');
       $url = explode('/', $url);
-      if (count($url) < 0 ) {
+      if (count($url) > 1 ) {
           if ( strcmp($url[1], 'cerrarSesion') == 0){
             $this->cargarInicio();
             return true;

@@ -62,8 +62,8 @@
 				        <div class="modal-body">
 									<?php $r = 0;
 									foreach ($this->founds as $found ) {
-														echo count($_SESSION['SEGUIDOS']);
-																		if (in_array($found->getId(),$_SESSION['SEGUIDOS'] )) { echo "entre T";	?>
+
+																		if (in_array($found->getId(),$_SESSION['SEGUIDOS'] )) { 	?>
 																			<div class="modal-body">
 																				<form class="" action="<?php echo constant('URL');?>perfil/verPerfil?id=<?php echo $found->getId()."&&alias=".$found->getAlias()."&&nombre=".$found->getNombre()."&&resena=".$found->getResena()."&&photo=".$found->getPhoto();?>" method="post">
 																				<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $found->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
@@ -72,7 +72,7 @@
 																				</form>
 																			</div>
 																	<?php
-																} else{  echo "entre F";?>
+																} else{ ?>
 																		<div class="modal-body">
 																			<form class="" action="<?php echo constant('URL');?>perfil/followUser?id=<?php echo $found->getId()."&&alias=".$found->getAlias()."&&nombre=".$found->getNombre()."&&resena=".$found->getResena()."&&photo=".$found->getPhoto();?>" method="post">
 																			<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $found->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
@@ -97,7 +97,7 @@
 		  	<br>
 		  	<br>
 		  	<p><strong><?php echo "@".$_SESSION['USER']->getAlias();?> &nbsp&nbsp&nbsp</strong> <a href="<?php echo constant('URL');?>perfil/configProfile"><button type="button" class="btn btn-outline-secondary">Editar Perfil</button></a> <button type="button" class="btn" data-toggle="modal" data-target="#modalconf"><img src="<?php echo constant('URL');?>public/img/recursos/ajustes.png"></button><button type="button" class="btn"  data-toggle="modal" data-target=".bd-example-modal-lg"><img src="<?php echo constant('URL');?>public/img/recursos/subir.png"></button></p>
-		  	<p><strong><?php echo count($this->imagenes);?>&nbsp</strong>Publicaciones <a id="btn-seguidores" data-toggle="modal" data-target="#segui"><strong>&nbsp&nbsp18</strong>&nbspseguidores</a><a id="btn-siguiendo" data-toggle="modal" data-target="#sigui"><strong>&nbsp&nbsp&nbsp22</strong>&nbspseguidos</a></p>
+		  	<p><strong><?php echo count($this->imagenes);?>&nbsp</strong>Publicaciones <a id="btn-seguidores" data-toggle="modal" data-target="#segui"><strong>&nbsp&nbsp<?PHP echo count($_SESSION['SEGUIDORES']);?></strong>&nbspseguidores</a><a id="btn-siguiendo" data-toggle="modal" data-target="#sigui"><strong>&nbsp&nbsp&nbsp<?php echo count($_SESSION['SEGUIDOS']); ?></strong>&nbspseguidos</a></p>
 		  	<p><strong><?php echo $_SESSION['USER']->getNombre(); ?></strong></p>
 				<p><?php echo $_SESSION['USER']->getResena(); ?></p>
 				<hr/>
