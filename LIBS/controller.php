@@ -7,24 +7,24 @@ class Controller{
   private $modelCtr;
   private $sesionCtr;
 
-  public function getViewCtr() {echo "GET_VIEW_CTR<br />";
+  public function getViewCtr() {
      return $this->viewCtr;
   }
 
-  public function getModelCtr() {echo "GET_model_CTR<br />";
+  public function getModelCtr(){
     return $this->modelCtr;
   }
 
-  public function getSesionCtr(){echo "GET_sesion_CTR<br />";
+  public function getSesionCtr(){
     return $this->sesionCtr;
   }
 
-  function __construct()  { echo " ** creando controlador padre ** <br />";
+  function __construct()  {
   //  $this->sesionCtr = $sesion;
     $this->viewCtr = new view();
   }
 
-  public function loadModel($model)  { echo " ** creando LOAD MODEL CONTROLLER ** <br />";
+  public function loadModel($model)  {
     $url = "MODELS/".$model."Model.php";
     if (file_exists($url)) {
         require $url;

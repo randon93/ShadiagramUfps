@@ -15,7 +15,7 @@ class Usuario  {
 public function __construct(){
 
 }
-  function crear($user) { echo " ** <BR /><H1>CREANDO USUARIO ** </H1><br />";
+  function crear($user) {
     $this->name = $user[0]['nombre'];
     $this->email = $user[0]['email'];
     $this->password = $user[0]['contrasena'];
@@ -26,7 +26,7 @@ public function __construct(){
 
   }
 
-  public function encontrado($found){ echo" **<BR /><H1> CRANDO USUARIO ENCONTRADO ** </H1><BR />";
+  public function encontrado($found){
     $this->name = $found['nombre'];
     $this->alias = $found['alias'];
     $this->id = $found['id'];

@@ -4,7 +4,7 @@
  */
 class Conexion {
 
-  function __construct(){ echo " ** CREANDO CONEXION  **<br /> ";
+  function __construct(){ 
     $this->bd = constant('bd');
     $this->usuarioBd = constant('usuarioBd');
     $this->pasword = constant('password');

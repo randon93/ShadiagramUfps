@@ -6,7 +6,7 @@
 
 class loginModel extends Model {
 
-  function __construct()  { echo " ** CREANDO LOGIN MODEL ** <br />";
+  function __construct()  {
     parent::__construct();
   }
 
@@ -38,20 +38,20 @@ class loginModel extends Model {
     /** ----------FUNCION INICIAR SESION-------- */
     /** ---------------------------------------- */
 
-    public function iniciar($usuario){ echo " ** INICIAR LOGIN MODEL ** <br />";
+    public function iniciar($usuario){
 
       /* contiene un Array con la informacion del usuario que intenta iniciar sesion */
       $exito = $this->bd->buscarGen([$usuario['email']],'usuario',['email']);
 
       /*Si este array es diferente a NULL significa que el usuario existe procedemos a verificar su password*/
-      if (!empty($exito)) { echo " ** USER ENCONTRADO ** ";
+      if (!empty($exito)) { 
 
-        if ($exito[0]['contrasena'] == $usuario['password']) { echo " ** INICIO SESION LOGIN MODEL ** <br />";
+        if ($exito[0]['contrasena'] == $usuario['password']) {
             $_SESSION['USER'] = new Usuario();
             $_SESSION['USER']->crear($exito);
             return true;
         }
-      }else { echo " ** NO ENCONTRAMOS USER LOGIN MODEL ** <br />";
+      }else {
         return false;
       }
     }

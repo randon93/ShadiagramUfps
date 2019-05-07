@@ -8,7 +8,7 @@ class Login extends controller{
   private $sesionCtr;
   private $controllerFather;
 
-  function __construct()  { echo ' ** CREANDO CONTROLADOR DE LOGIN ** <br />';
+  function __construct()  {
   //  $this->sesionCtr = $sesionApp;
     parent::__construct();
 
@@ -17,7 +17,7 @@ class Login extends controller{
       /** METODO RENDERISAR VISTA DEL CONTROLADOR*/
   /** //////////////////////////////////////////////  */
 
-  function render($r){ echo " ** RENDER LOGIN CONTROLLER **<br /> ";
+  function render($r){
     $this->getViewCtr()->render($r . '/index');
   }
 
@@ -45,33 +45,33 @@ class Login extends controller{
             /** METODO INICIAR SESION */
   /** //////////////////////////////////////////////  */
 
-  function iniciar(){ echo " ** LOGIN CONTROLLER iniciar **<br /> ";
+  function iniciar(){
 
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
-        if ( !isset($_SESSION['USER']) ) { echo " ** CREANDO SESION ** "; // FALSE si no existe sesion.
+        if ( !isset($_SESSION['USER']) ) {  // FALSE si no existe sesion.
 
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 /*Valida si el usuario puede o no crear una sesion*/
                 $exito = $this->getModelCtr()->iniciar(['email'=>$email,'password'=>$password]);
-                if ($exito) { echo " ** Sesion creada LOGIN CONTROLLER ** ";// TRUE el usuario creo una sesion, procede a mostrar su perfil
+                if ($exito) { // TRUE el usuario creo una sesion, procede a mostrar su perfil
                     require_once 'perfilController.php';
                     $perfilUser = new Perfil();
                     $perfilUser->loadModel('perfil');
                     $perfilUser->render();
-                }else { echo " ** VISTA ERROR LOGIN CONTROLLER **<br /> ";
+                }else {
                     echo "<script> alert('CONTRASEÑA O USUARIO ERRADO'); </script>";
                     $this->render('login');
                 }
-         }else { echo " ** EXISTE SESION LOGIN CONTROL **<br /> ";
+         }else {
            echo $_SESSION['USER']->getAlias();
              require_once 'perfilController.php';
              $perfilUser = new Perfil();
              $perfilUser->loadModel('perfil');
              $perfilUser->render();
          }
-    }else {echo " ** VISTA ERROR LOGIN CONTROLLER **<br /> ";
+    }else {
         $this->render('error');
     }
   }

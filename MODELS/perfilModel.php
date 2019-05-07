@@ -4,7 +4,7 @@
  */
 class perfilModel extends Model {
 
-  function __construct() { echo " ** CREANDO PERFIL MODEL ** <br />";
+  function __construct() {
     parent::__construct();
   }
 
@@ -18,7 +18,7 @@ class perfilModel extends Model {
     return $photoUser;
   }
 
-  public function cargarImagenes ( $id ) {echo " ** CARGANDO PUBLICACIONES DEL USUARIO PERFIL MODEL ** <br />";
+  public function cargarImagenes ( $id ) {
 
     $directorio = opendir('PUBLIC/img/users'); //ruta actual
     $json = array();
