@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+<?php var_dump($_SESSION['SEGUIDOS']); ?>
 
 	<!--Inicio  Barra navegacion-->
 	<nav class="navbar navbar-expand-sm  bg-mycolor" style="height: 80px">

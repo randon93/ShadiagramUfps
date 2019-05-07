@@ -30,7 +30,7 @@
 							<img src="<?php echo constant('URL');?>public/img/recursos/usuario.png" class="rounded-circle" id="profile">
 						</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="index.html">Inicio</a>
+							<a class="dropdown-item" href="<?php constant('URL');?>">Inicio</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Configuracion</a>
 							<div class="dropdown-divider"></div>
@@ -60,29 +60,29 @@
 				        </div>
 				        <!-- Modal body -->
 				        <div class="modal-body">
-									<?php
-									for ($i=0; $i < count($this->founds) ; $i++) {
-
-										for ($j=0; $j < count($_SESSION['SEGUIDOS']) ; $j++) {
-											echo "<h1>".($_SESSION['SEGUIDOS'][$j]['seguido'])."</h1>". $_SESSION['USER']->getId() ;
-														if ($this->founds[$i]->getId() == $_SESSION['SEGUIDOS'][$j]['seguido']) { ?>
-															<div class="modal-body">
-																<form class="" action="<?php echo constant('URL');?>perfil/verPerfil?id=<?php echo $this->founds[$i]->getId()."&&alias=".$this->founds[$i]->getAlias()."&&nombre=".$this->founds[$i]->getNombre()."&&resena=".$this->founds[$i]->getResena()."&&photo=".$this->founds[$i]->getPhoto();?>" method="post">
-																<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $this->founds[$i]->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
-																	<strong><?php echo $this->founds[$i]->getNombre(); ?></strong>
-																	<input type="submit" class="btn btn-info" value="Visitar">
-																</form>
-															</div>
-													<?php  	}else{?>
-														<div class="modal-body">
-															<form class="" action="<?php echo constant('URL');?>perfil/followUser?id=<?php echo $this->founds[$i]->getId()."&&alias=".$this->founds[$i]->getAlias()."&&nombre=".$this->founds[$i]->getNombre()."&&resena=".$this->founds[$i]->getResena()."&&photo=".$this->founds[$i]->getPhoto();?>" method="post">
-															<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $this->founds[$i]->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
-																<strong><?php echo $this->founds[$i]->getNombre(); ?></strong>
-																<input type="submit" class="btn btn-info" value="Seguir">
-															</form>
-														</div>
-										<hr>
-									<?php }	}} ?>
+									<?php $r = 0;
+									foreach ($this->founds as $found ) {
+														echo count($_SESSION['SEGUIDOS']);
+																		if (in_array($found->getId(),$_SESSION['SEGUIDOS'] )) { echo "entre T";	?>
+																			<div class="modal-body">
+																				<form class="" action="<?php echo constant('URL');?>perfil/verPerfil?id=<?php echo $found->getId()."&&alias=".$found->getAlias()."&&nombre=".$found->getNombre()."&&resena=".$found->getResena()."&&photo=".$found->getPhoto();?>" method="post">
+																				<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $found->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
+																					<strong><?php echo $found->getNombre(); ?></strong>
+																					<input type="submit" class="btn btn-info" value="Visitar">
+																				</form>
+																			</div>
+																	<?php
+																} else{  echo "entre F";?>
+																		<div class="modal-body">
+																			<form class="" action="<?php echo constant('URL');?>perfil/followUser?id=<?php echo $found->getId()."&&alias=".$found->getAlias()."&&nombre=".$found->getNombre()."&&resena=".$found->getResena()."&&photo=".$found->getPhoto();?>" method="post">
+																			<img class="rounded-circle" style="height: 150px; width: 150px;margin: 25px" src="<?php echo constant('URL');?>PUBLIC/IMG/USERS/<?php echo $found->getPhoto();?>">&nbsp&nbsp&nbsp&nbsp
+																				<strong><?php echo $found->getNombre(); ?></strong>
+																				<input type="submit" class="btn btn-info" value="Seguir">
+																			</form>
+																		</div>
+																		<hr>
+													<?php	}
+									} ?>
 				      	</div>
 				    </div>
 				  </div>

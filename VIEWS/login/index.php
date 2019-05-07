@@ -15,7 +15,7 @@
       <title>Perfil de Usuario</title>
     </head>
     <body>
-
+<?php var_dump($_SESSION['SEGUIDOS']); ?>
 
           <div class="contenedor-form">
               <div class="toggle">

@@ -55,7 +55,7 @@ class App {
     0 si son iguales.
     */
     if (empty($url[0]) || strcmp($url[0], 'login') == 0 ) {
-      echo " **CARGO INICIO App** <br />";
+      echo " **CARGO LOGIN App** <br />";
       $archivoController = 'CONTROLLERS/loginController.php';
       require_once $archivoController;
       $controller = new Login();
@@ -67,6 +67,7 @@ class App {
       }
       return false;
     }
+    
 
   /*  $archivoController = 'CONTROLLERS/'. $url[0] .'Controller.php';
     if(file_exists($archivoController)){

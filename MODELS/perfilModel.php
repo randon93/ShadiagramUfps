@@ -75,12 +75,12 @@ class perfilModel extends Model {
       $respuesta = $con->prepare("SELECT * FROM usuario WHERE nombre LIKE '%".$searchUser."%' || apodo LIKE '%".$searchUser."%' ");
       $respuesta->execute();
         foreach($respuesta as $users) {
-          $user = new Usuario();
-          $user->encontrado([ "id"=>$users["id"], "nombre"=>$users["nombre"], "alias"=>$users["apodo"],"photo"=>$users["photo"], "email"=>$users['email'], "resena"=>$users['resena'] ]);
-          array_push($foundUser, $user);
-      }
-    $this->seguidos();
-    return $foundUser;
+              $user = new Usuario();
+              $user->encontrado([ "id"=>$users["id"], "nombre"=>$users["nombre"], "alias"=>$users["apodo"],"photo"=>$users["photo"], "email"=>$users['email'], "resena"=>$users['resena'] ]);
+              array_push($foundUser, $user);
+        }
+      $this->seguidos();
+      return $foundUser;
   }
 
   public function visitUser($visit){
@@ -143,11 +143,7 @@ class perfilModel extends Model {
     $con = $this->bd->conectar();
     $vnew = $con ->prepare('UPDATE usuario SET resena = :descripcion WHERE id = :id');
     if ($vnew -> execute(array(":descripcion"=>$_POST['descripcionNew'], ":id"=>$_SESSION['USER']->getId()))) {
-<<<<<<< HEAD
         $con = $this->bd->cerrarCon();
-=======
-      $con = $this->bd->cerrarCon();
->>>>>>> 9ffb7f2c1b0abd7ebd2e27c5545ea5d39a625787
       $_SESSION['USER']->setResena($_POST['descripcionNew']);
       return true;
     }else{
@@ -165,7 +161,7 @@ class perfilModel extends Model {
       $seg = $con -> prepare('INSERT INTO amistades(idAmistad, idUsuario) VALUES (:seguido, :seguidor)');
       $seg -> execute( array(":seguido"=>$seguido, ":seguidor"=>$seguidor) );
       $con = $this->bd->cerrarCon();
-      //$this->seguidos();
+      $this->seguidos();
       return true;
     } catch (PDOException $e) {
       return false;
@@ -173,16 +169,16 @@ class perfilModel extends Model {
 
   }
 
-  public function seguidos(){
+  public function seguidos(){ echo "<h1>PRRO JIJIJIJIJIJIJIOPUTA</h1>";
     $con = $this->bd->conectar();
     $array = [];
     $seguidos = $con -> prepare('SELECT idAmistad FROM amistades WHERE idUsuario = :idUsuario');
     $seguidos -> execute( array(":idUsuario"=>$_SESSION['USER']->getId() ));
     foreach ($seguidos as $seguido) {
-        array_push($array, ["seguido" => $seguido['idAmistad']] );
+        array_push($array,  $seguido['idAmistad'] );
     }
     $_SESSION['SEGUIDOS'] = $array;
-
+    //  return $array;
   }
 
 
